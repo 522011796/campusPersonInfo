@@ -1,7 +1,7 @@
 body{
   color: #999999;
   font-size: 14px;
-  background: #F5F5F5;
+  background: #6bd575;
 }
 .pull-left{
   float: left;
@@ -81,6 +81,12 @@ body{
 .color-disabled{
   color: #999999;
 }
+.color-ff976a{
+  color: #ff976a
+}
+.color-6bd575{
+  color: #6bd575;
+}
 .bg-d93442{
   background: #d93442;
 }
@@ -141,6 +147,9 @@ body{
 .margin-bottom-20{
   margin-bottom: 20px;
 }
+.margin-bottom-30{
+  margin-bottom: 30px;
+}
 .margin-lr-5{
   margin-left: 5px;
   margin-right: 5px;
@@ -151,6 +160,12 @@ body{
 }
 .margin-right-5{
   margin-right: 5px;
+}
+.padding-left-5{
+  padding-left: 5px;
+}
+.padding-left-10{
+  padding-left: 10px;
 }
 .padding-lr-5{
   padding-left: 5px;
@@ -294,4 +309,25 @@ body{
 }
 .inline-block{
   display: inline-block;
+}
+.form-control-static {
+    min-height: 34px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-bottom: 0;
+}
+.font-blod{
+  font-weight: bold;
+}
+.logIn input::-webkit-input-placeholder{
+  color:#eeeeee;
+}
+.logIn form input:-moz-placeholder{
+  color:#eeeeee;
+}
+.logIn input::-moz-placeholder{
+  color:#eeeeee;
+}
+.logIn input:-ms-input-placeholder{
+  color:#eeeeee;
 }

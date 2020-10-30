@@ -16,7 +16,6 @@
     },
     created() {
       this.notScale();
-      this.getUserInfo();
     },
     methods: {
       notScale(){
@@ -47,20 +46,6 @@
         } catch (error) {
 
         }
-      },
-      getUserInfo(){
-        let _self = this;
-        this.logined = false;
-        let params = {
-          scope: 3
-        };
-        this.$axios.get('/proxy/common/auth/get-user-info', {params: params}).then((res) => {
-          if (res){
-            if (res.data.code == 200){
-
-            }
-          };
-        })
       }
     }
   }

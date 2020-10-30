@@ -1,0 +1,37 @@
+[
+  {
+    "name": "indexBak",
+    "path": "/indexBak",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/indexBak.vue",
+    "chunkName": "pages/indexBak",
+    "_name": "_941d8802"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/login.vue",
+    "chunkName": "pages/login",
+    "_name": "_0147b7d8"
+  },
+  {
+    "name": "userDetail",
+    "path": "/userDetail",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/userDetail.vue",
+    "chunkName": "pages/userDetail",
+    "_name": "_f802743e"
+  },
+  {
+    "name": "userList",
+    "path": "/userList",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/userList.vue",
+    "chunkName": "pages/userList",
+    "_name": "_6bd624a4"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_35b480fd"
+  }
+]
