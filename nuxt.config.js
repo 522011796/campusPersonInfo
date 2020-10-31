@@ -15,7 +15,7 @@ export default {
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
     'vant/lib/index.less',
-    '~assets/css/main.css',
+    '~assets/css/common.css',
     '~assets/font-awesome-4.7.0/css/font-awesome.min.css',
   ],
 
@@ -51,7 +51,7 @@ export default {
   },
   proxy: [
     ['/proxy', {
-      target: 'http://campust.9451.org:10201',  //api请求路径
+      target: 'http://campus.9451.com',  //api请求路径
       pathRewrite: { '^/proxy' : '/' }  //重定向请求路径，防止路由、api路径的冲突
     }]
   ],

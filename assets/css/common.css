@@ -331,3 +331,9 @@ body{
 .logIn input:-ms-input-placeholder{
   color:#eeeeee;
 }
+.transparent_class {
+  filter:alpha(opacity=90);
+  -moz-opacity:0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
+}

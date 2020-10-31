@@ -7,7 +7,7 @@ import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '../node_modules/vant/lib/index.less'
 
-import '../assets/css/main.css'
+import '../assets/css/common.css'
 
 import '../assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
