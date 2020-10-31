@@ -46,7 +46,9 @@
 </template>
 
 <script>
+import mixins from "../mixins/mixins";
 export default {
+  mixins: [mixins],
   data(){
     return {
 
@@ -57,6 +59,7 @@ export default {
   },
   methods: {
     detail() {
+      console.log(this.campusUrl + "/user/user/getSess");
       this.$router.push({
         path: '/userDetail'
       });

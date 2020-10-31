@@ -12,6 +12,10 @@ export default {
     initCampusConfig(){
       if (process.client){
         this.campusUrl = localStorage.getItem("url");
+        if (!this.campusUrl || this.campusUrl == ""){
+          localStorage.removeItem("url");
+          localStorage.removeItem("name");
+        }
       }
     }
   }

@@ -28,7 +28,7 @@
             <van-col span="12">
               <div>
                 <van-button type="primary" size="small" color="#6bd575" @click="showYearList()">
-                  2010学期
+                  {{yearStr}}
                   <i class="fa fa-caret-down"></i>
                 </van-button>
               </div>
@@ -133,7 +133,7 @@
               <span class="margin-left-10">
                 <label>{{$t("早退")}}</label>
                 <label>
-                  <van-button plain size="mini" type="danger">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退')">0{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总出勤")}}</span>
@@ -308,12 +308,22 @@
           <span class="detail-block-list-text">{{type}}</span>
 
           <span class="margin-left-5 detail-block-list-text">{{typeText}}</span>
-          <span class="margin-left-5 detail-block-list-text color-ff976a">|</span>
 
-          <span class="detail-block-list-text color-ff976a">0次</span>
-          <span class="margin-left-5 detail-block-list-text color-ff976a">|</span>
+          <!--<span class="margin-left-5 detail-block-list-text color-ff976a">|</span>-->
 
-          <span class="detail-block-list-text color-ff976a color-ff976a">0分</span>
+          <span class="detail-block-list-text color-ff976a">
+            0
+            <label v-if="tag=='credit' || tag=='leave' || tag=='lateDorm' || tag=='lateUnsign' || tag=='lateLong' || tag=='puYes' || tag=='quYes' || tag=='puNo' || tag=='quNo' || tag=='doorIn' || tag=='doorOut'">次</label>
+            <label v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">节</label>
+          </span>
+
+          <span class="margin-left-5 detail-block-list-text color-ff976a" v-if="tag=='credit' || tag=='leave'">|</span>
+
+          <span class="detail-block-list-text color-ff976a color-ff976a" v-if="tag=='credit' || tag=='leave'">
+            0
+            <label v-if="tag=='credit'">分</label>
+            <label v-if="tag=='leave'">天</label>
+          </span>
         </div>
         <div class="detail-pop-title margin-top-10">
           <van-row v-if="tag == 'credit'">
@@ -431,8 +441,8 @@
 
     <van-popup v-model="showYear" position="bottom">
       <div style="height: 300px; overflow-y: auto">
-        <div class="text-center detail-pop-year-content" v-for="n in 10">
-          <span class="font-size-16">xxxxxxxxxxxxx</span>
+        <div class="text-center detail-pop-year-content" :class="item.id == yearId ? 'detail-opo-year-active' : ''" v-for="item in yearList" :key="item.id" @click="selectYear($event, item)">
+          <span class="font-size-16">{{item.name}}</span>
         </div>
       </div>
     </van-popup>
@@ -440,7 +450,9 @@
 </template>
 
 <script>
+import mixins from "../mixins/mixins";
 export default {
+  mixins: [mixins],
   data(){
     return {
       show: false,
@@ -458,6 +470,15 @@ export default {
       minDate: new Date(2010, 0, 1),
       maxDate: new Date(2055, 11, 31),
       currentDate: new Date(),
+      yearStr: '2020第一学期',
+      yearId: '',
+      yearList: [
+        {name: '2020第一学期', id: 1},
+        {name: '2020第二学期', id: 2},
+        {name: '2020第三学期', id: 3},
+        {name: '2020第四学期', id: 4},
+        {name: '2020第五学期', id: 5},
+      ]
     }
   },
   created() {
@@ -527,6 +548,11 @@ export default {
     },
     showYearList(){
       this.showYear = true;
+    },
+    selectYear(event, item){
+      this.yearStr = item.name;
+      this.yearId = item.id;
+      this.showYear = false;
     },
     returnList(){
       this.$router.push({
@@ -601,5 +627,8 @@ export default {
   .detail-pop-year-content{
     padding:15px 10px;
     border-bottom: 1px solid #efefef;
+  }
+  .detail-opo-year-active{
+    color: #6bd575;
   }
 </style>

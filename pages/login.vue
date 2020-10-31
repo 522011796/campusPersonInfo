@@ -58,6 +58,7 @@
 <script>
 import mixins from "../mixins/mixins";
 import { Notify } from 'vant';
+import { Toast } from 'vant';
 export default {
   layout: 'fullScreenLayout',
   mixins: [mixins],
@@ -78,14 +79,7 @@ export default {
   },
   created() {
     if (process.client){
-      document.addEventListener("click", e => {
-        let list = document.getElementById("menu_arr");
-        if (list.contains(e.target)) {
-          this.showPop = false;
-        } else {
-          this.showPop = false;
-        }
-      });
+      document.addEventListener("click", this.clickListPop);
     }
 
     this.init();
@@ -97,6 +91,14 @@ export default {
         if (localStorage.getItem("name") && localStorage.getItem("name") != ""){
           this.campusName = localStorage.getItem("name");
         }
+      }
+    },
+    clickListPop(event){
+      let list = document.getElementById("menu_arr");
+      if (list.contains(event.target)) {
+        this.showPop = false;
+      } else {
+        this.showPop = false;
       }
     },
     getCampusList(){
@@ -136,6 +138,11 @@ export default {
       this.showPop = false;
     },
     sendPhone(){
+      let phoneReg = /^1[2345789]\d{9}$/;
+      if (!phoneReg.test(this.phone)){
+        Toast(this.$t("手机号格式错误！"));
+        return;
+      }
       this.timeDownStatus = true;
     },
     finish(){
@@ -143,17 +150,29 @@ export default {
       this.timeDown = 6 * 1000;
     },
     login(values) {
+      if (!this.campusUrl || this.campusUrl == ""){
+        Notify({ type: 'warning', message: this.$t("配置文件失效，请刷新重新获取！") });
+        return;
+      }
       if (this.campusName == "" || this.phone == "" || this.code == ""){
         Notify({ type: 'warning', message: this.$t("请检查信息填写是否正确！") });
         return;
       }
+      let data = {
+        campusName: '',
+        phone: '',
+        code: ''
+      };
       console.log(this.campusUrl + "/user/user/getSess");
       this.$axios.get(this.campusUrl + "/user/user/getSess").then(res => {
         console.log(res);
       });
-      /*this.$router.push({
+      this.$router.push({
         path: '/userList'
-      });*/
+      });
+
+      //移除时间监听
+      document.removeEventListener("click", this.clickListPop);
     },
   }
 }
