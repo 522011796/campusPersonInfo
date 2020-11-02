@@ -16,7 +16,7 @@
         </van-col>
         <van-col span="3">
           <div class="text-center margin-top-5">
-            <i class="fa fa-envelope-o" style="font-size: 22px;color: #ffffff"></i>
+            <i class="fa fa-envelope-o" style="font-size: 22px;color: #ffffff" @click="noticeList"></i>
           </div>
         </van-col>
       </van-row>
@@ -404,25 +404,34 @@
         </div>
         <div style="height: 500px;overflow-y: auto">
           <div class="detail-pop-content">
-            <van-row v-if="tag == 'quYes' || tag == 'quNo'">
-              <van-col span="12" class="text-center">
-                <span>1</span>
-              </van-col>
-              <van-col span="12" class="text-center">
-                <span>2</span>
-              </van-col>
-            </van-row>
-            <van-row v-else>
-              <van-col span="8" class="text-center">
-                <span>1</span>
-              </van-col>
-              <van-col span="8" class="text-center">
-                <span>2</span>
-              </van-col>
-              <van-col span="8" class="text-center">
-                <span>3</span>
-              </van-col>
-            </van-row>
+            <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
+              <van-list
+                v-model="loading"
+                :finished="finished"
+                @load="onLoad"
+              >
+
+                <van-row v-if="tag == 'quYes' || tag == 'quNo'" v-for="(item, index) in list">
+                  <van-col span="12" class="text-center">
+                    <span>{{item}}</span>
+                  </van-col>
+                  <van-col span="12" class="text-center">
+                    <span>2</span>
+                  </van-col>
+                </van-row>
+                <van-row v-else v-for="(item, index) in list">
+                  <van-col span="8" class="text-center">
+                    <span>{{item}}</span>
+                  </van-col>
+                  <van-col span="8" class="text-center">
+                    <span>2</span>
+                  </van-col>
+                  <van-col span="8" class="text-center">
+                    <span>3</span>
+                  </van-col>
+                </van-row>
+              </van-list>
+            </van-pull-refresh>
           </div>
         </div>
       </div>
@@ -458,7 +467,11 @@ export default {
   components: {AppLoading},
   data(){
     return {
+      list: [],
+      loading: false,
+      finished: false,
       showLoading: false,
+      refreshing: false,
       show: false,
       showPicker: false,
       showYear: false,
@@ -526,9 +539,15 @@ export default {
       }else if (type == "doorOut"){
         this.type = this.$t("门禁通行");
       }
+      this.loading = true;
+      this.onLoad();
       this.show = true;
     },
     close(){
+      this.list = [];
+      this.refreshing = false;
+      this.loading = false;
+
       this.show = false;
     },
     showPickerOpr(){
@@ -562,6 +581,37 @@ export default {
       this.$router.push({
         path: '/userList'
       });
+    },
+    noticeList(){
+      this.$router.push({
+        path: '/noticeList'
+      });
+    },
+    onRefresh(){
+      // 清空列表数据
+      this.finished = false;
+
+      // 重新加载数据
+      // 将 loading 设置为 true，表示处于加载状态
+      this.loading = true;
+      this.onLoad();
+    },
+    onLoad() {
+      setTimeout(() => {
+        if (this.refreshing) {
+          this.list = [];
+          this.refreshing = false;
+        }
+
+        for (let i = 0; i < 10; i++) {
+          this.list.push(this.list.length + 1);
+        }
+        this.loading = false;
+
+        if (this.list.length >= 40) {
+          this.finished = true;
+        }
+      }, 1000);
     }
   }
 }

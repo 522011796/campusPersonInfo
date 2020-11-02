@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="485b0077-8e07-4869-bc53-2544d0a2b9aa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/middleware/middleRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/noticeList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/apiUrl.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nuxt/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nuxt/routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/routes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/AppLoading.vue" beforeDir="false" afterPath="$PROJECT_DIR$/components/AppLoading.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/locales/zh-CN.json" beforeDir="false" afterPath="$PROJECT_DIR$/locales/zh-CN.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mixins/mixins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mixins/mixins.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nuxt.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/nuxt.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/userDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userDetail.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +29,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pages" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -40,9 +39,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/mixins" />
-      <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$/static/img" />
       <recent name="$PROJECT_DIR$/layouts" />
     </key>
@@ -71,7 +70,7 @@
       <updated>1604023752797</updated>
       <workItem from="1604023761579" duration="4921000" />
       <workItem from="1604028985132" duration="19974000" />
-      <workItem from="1604109555847" duration="19287000" />
+      <workItem from="1604109555847" duration="26892000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604054123842</created>
@@ -101,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604289489991</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="init">
+      <created>1604299412373</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604299412374</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,10 +122,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1604297857738" />
-    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604289488999">
+    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604299411577">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604289488999" />
+    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604299411577" />
     <state x="560" y="326" key="Github.ShareDialog" timestamp="1604053366164">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
@@ -128,10 +134,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="378" y="139" key="Github.UntrackedFilesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053371884" />
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604289491876">
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604299414089">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604289491876" />
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604299414089" />
     <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604108909274">
       <screen x="0" y="23" width="1440" height="805" />
     </state>

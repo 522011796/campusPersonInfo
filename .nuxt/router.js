@@ -5,6 +5,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _941d8802 = () => interopDefault(import('../pages/indexBak.vue' /* webpackChunkName: "pages/indexBak" */))
 const _0147b7d8 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _32ad670a = () => interopDefault(import('../pages/noticeList.vue' /* webpackChunkName: "pages/noticeList" */))
 const _f802743e = () => interopDefault(import('../pages/userDetail.vue' /* webpackChunkName: "pages/userDetail" */))
 const _6bd624a4 = () => interopDefault(import('../pages/userList.vue' /* webpackChunkName: "pages/userList" */))
 const _35b480fd = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
@@ -33,6 +34,10 @@ export const routerOptions = {
     path: "/login",
     component: _0147b7d8,
     name: "login"
+  }, {
+    path: "/noticeList",
+    component: _32ad670a,
+    name: "noticeList"
   }, {
     path: "/userDetail",
     component: _f802743e,

@@ -25,14 +25,15 @@
   z-index: 9999;
   left: 0;
   top: 0;
-  background: #dddddd;
   filter:alpha(opacity=50);
   -moz-opacity:0.5;
   -khtml-opacity: 0.5;
   opacity: 0.5;
+  background: #dddddd;
 }
 .loading-content{
-  text-align: center;
-  margin-top: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 </style>
