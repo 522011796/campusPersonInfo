@@ -151,7 +151,7 @@ export default {
     },
     login(values) {
       if (!this.campusUrl || this.campusUrl == ""){
-        Notify({ type: 'warning', message: this.$t("配置文件失效，请刷新重新获取！") });
+        Notify({ type: 'warning', message: this.$t("用户信息失效，请刷新重新获取！") });
         return;
       }
       if (this.campusName == "" || this.phone == "" || this.code == ""){

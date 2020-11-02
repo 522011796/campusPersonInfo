@@ -58,6 +58,9 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    vendor: ['i18n','utils', 'qs', 'axios', 'moment'] //为防止重复打包
+    vendor: ['i18n','utils', 'qs', 'axios', 'moment'], //为防止重复打包
+  },
+  router: {
+    middleware: ['middleRouter']
   }
 }
