@@ -1,4 +1,10 @@
 {
+  "AppLoading": {
+    "description": "Auto imported from components/AppLoading.vue"
+  },
+  "LazyAppLoading": {
+    "description": "Auto imported from components/AppLoading.vue"
+  },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },

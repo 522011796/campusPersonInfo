@@ -1,5 +1,6 @@
 <template>
   <div class="content-bg">
+    <AppLoading :show="showLoading"></AppLoading>
     <div class="">
       <van-row>
         <van-col span="3">
@@ -450,11 +451,14 @@
 </template>
 
 <script>
+import AppLoading from './../components/AppLoading'
 import mixins from "../mixins/mixins";
 export default {
   mixins: [mixins],
+  components: {AppLoading},
   data(){
     return {
+      showLoading: false,
       show: false,
       showPicker: false,
       showYear: false,
