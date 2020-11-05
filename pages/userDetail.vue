@@ -11,7 +11,7 @@
         <van-col span="18">
           <div class="text-center detail-title">
             <div>{{$t("个人报告")}}</div>
-            <div>xxxxxxxx学院</div>
+            <div>{{campusName}}</div>
           </div>
         </van-col>
         <van-col span="3">
@@ -37,7 +37,7 @@
             <van-col span="12">
               <div class="text-right color-6bd575" style="position: relative; top: 5px">
                 <span>{{$t("整体量化率")}}</span>
-                <span class="margin-left-5">0%</span>
+                <span class="margin-left-5">{{qtztRate}}%</span>
               </div>
             </van-col>
           </van-row>
@@ -50,13 +50,13 @@
             </van-col>
             <van-col span="9" class="padding-left-10">
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.real_name}}</span>
               </div>
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.class_name}}</span>
               </div>
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.college_name}}</span>
               </div>
             </van-col>
             <van-col span="1">
@@ -64,13 +64,13 @@
             </van-col>
             <van-col span="9">
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.student_id}}</span>
               </div>
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.dormitory_no}}</span>
               </div>
               <div class="margin-top-5">
-                <span>xxxxxxxxxxx</span>
+                <span>{{userInfo.phone}}</span>
               </div>
             </van-col>
           </van-row>
@@ -87,20 +87,20 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("素质学分")}}</span>
-              <span class="pull-right color-6bd575">0{{$t("分")}}</span>
+              <span class="pull-right color-6bd575">{{scoreSum}}{{$t("分")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("加分")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'credit', '加分')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'credit', '加分', '加分', scoreAddCount)">{{scoreAddCount}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("减分")}}</label>
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'credit', '减分')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'credit', '减分', '减分', scoreMinusCount)">{{scoreMinusCount}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总分数")}}</span>
@@ -114,27 +114,27 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("课堂考勤")}}</span>
-              <span class="detail-block-list-sub_text font-size-12">{{$t("出勤率")}}0%</span>
-              <span class="pull-right color-6bd575">0{{$t("节")}}</span>
+              <span class="detail-block-list-sub_text font-size-12">{{$t("出勤率")}}{{rollCallActualRate}}%</span>
+              <span class="pull-right color-6bd575">{{rollCallActualNum}}{{$t("节")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("迟到")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到', '3', rollCallLateNum)">{{rollCallLateNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("旷课")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课', '0', rollCallUnSignNum)">{{rollCallUnSignNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("早退")}}</label>
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退', '4', rollCallLeaveEarlyNum)">{{rollCallLeaveEarlyNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总出勤")}}</span>
@@ -148,15 +148,15 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("日常请假")}}</span>
-              <span class="detail-block-list-sub_text font-size-12">{{$t("出勤率")}}0%</span>
-              <span class="pull-right color-6bd575">0{{$t("天")}}</span>
+              <span class="detail-block-list-sub_text font-size-12">{{$t("请假率")}}{{leaveRate}}%</span>
+              <span class="pull-right color-6bd575">{{leaveSum}}{{$t("天")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("请假")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'leave', '请假')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'leave', '请假', '2', leaveCount)">{{leaveCount}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总请假")}}</span>
@@ -170,30 +170,30 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("归寝签到")}}</span>
-              <span class="detail-block-list-sub_text font-size-12">{{$t("旷寝率")}}0%</span>
-              <span class="pull-right color-6bd575">0{{$t("次")}}</span>
+              <span class="detail-block-list-sub_text font-size-12">{{$t("旷寝率")}}{{rollCallBedActualRate}}%</span>
+              <span class="pull-right color-6bd575">{{rollCallBedUnSignNum}}{{$t("次")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("晚归")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'lateDorm', '晚归')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'lateDorm', '晚归', '3', rollCallBedLateNum)">{{rollCallBedLateNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("旷寝")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsignDorm', '旷寝')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsignDorm', '旷寝', '0', rollCallBedUnSignNum)">{{rollCallBedUnSignNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("超长")}}</label>
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'longDorm', '超长')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'longDorm', '超长', '4', rollCallBedLateLongNum)">{{rollCallBedLateLongNum}}{{$t("次")}}</van-button>
                 </label>
               </span>
-              <span class="pull-right font-bold">{{$t("总出勤")}}</span>
+              <span class="pull-right font-bold">{{$t("总旷寝")}}</span>
               <span class="clearfix"></span>
             </div>
           </div>
@@ -204,21 +204,21 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("奖惩统计")}}</span>
-              <span class="detail-block-list-sub_text font-size-12">{{$t("奖惩率")}}0%</span>
-              <span class="pull-right color-6bd575">0{{$t("次")}}</span>
+              <span class="detail-block-list-sub_text font-size-12">{{$t("奖惩率")}}{{punishRate}}%</span>
+              <span class="pull-right color-6bd575">{{punishSanctionCount}}{{$t("次")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("奖励")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'puYes', '奖励')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'puYes', '奖励', '奖励', punishRewardCount)">{{punishRewardCount}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("处分")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'puNo', '处分')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'puNo', '处分', '处分', punishSanctionCount)">{{punishSanctionCount}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总处分")}}</span>
@@ -232,21 +232,21 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("内务评比")}}</span>
-              <span class="detail-block-list-sub_text font-size-12">{{$t("合格率")}}0%</span>
-              <span class="pull-right color-6bd575">0{{$t("次")}}</span>
+              <span class="detail-block-list-sub_text font-size-12">{{$t("合格率")}}{{dormRate}}%</span>
+              <span class="pull-right color-6bd575">{{dormLowCountTotal}}{{$t("次")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("合格")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'quYes', '合格')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'quYes', '合格', 'true', dormPassCountTotal)">{{dormPassCountTotal}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("不合格")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'quNo', '不合格')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'quNo', '不合格', 'false', dormLowCountTotal)">{{dormLowCountTotal}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("不合格")}}</span>
@@ -260,20 +260,20 @@
 
               </span>
               <span class="detail-block-list-text">{{$t("门禁通行")}}</span>
-              <span class="pull-right color-6bd575">0{{$t("次")}}</span>
+              <span class="pull-right color-6bd575">{{doorSum}}{{$t("次")}}</span>
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
               <span>
                 <label>{{$t("进入")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'doorIn', '进入')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'doorIn', '进入', '1', inDoorSum)">{{inDoorSum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("外出")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'doorOut', '外出')">0{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'doorOut', '外出', '2', outDoorSum)">{{outDoorSum}}{{$t("次")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总通行")}}</span>
@@ -313,15 +313,15 @@
           <!--<span class="margin-left-5 detail-block-list-text color-ff976a">|</span>-->
 
           <span class="detail-block-list-text color-ff976a">
-            0
-            <label v-if="tag=='credit' || tag=='leave' || tag=='lateDorm' || tag=='lateUnsign' || tag=='lateLong' || tag=='puYes' || tag=='quYes' || tag=='puNo' || tag=='quNo' || tag=='doorIn' || tag=='doorOut'">次</label>
+            {{selCurrenSum}}
+            <label v-if="tag=='credit' || tag=='leave' || tag=='lateDorm' || tag=='lateUnsign' || tag=='lateLong' || tag=='puYes' || tag=='quYes' || tag=='puNo' || tag=='quNo' || tag=='doorIn' || tag=='doorOut' || tag == 'unsignDorm' || tag == 'longDorm'">次</label>
             <label v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">节</label>
           </span>
 
           <span class="margin-left-5 detail-block-list-text color-ff976a" v-if="tag=='credit' || tag=='leave'">|</span>
 
           <span class="detail-block-list-text color-ff976a color-ff976a" v-if="tag=='credit' || tag=='leave'">
-            0
+            {{selTotalSum}}
             <label v-if="tag=='credit'">分</label>
             <label v-if="tag=='leave'">天</label>
           </span>
@@ -360,7 +360,7 @@
               <span>{{$t("时长")}}</span>
             </van-col>
           </van-row>
-          <van-row v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'earlyDorm'">
+          <van-row v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">
             <van-col span="8" class="text-center">
               <span>{{$t("日期")}}</span>
             </van-col>
@@ -411,23 +411,38 @@
                 @load="onLoad"
               >
 
-                <van-row v-if="tag == 'quYes' || tag == 'quNo'" v-for="(item, index) in list">
+                <van-row v-if="tag == 'quYes' || tag == 'quNo'" v-for="(item, index) in detailList" :key="index">
                   <van-col span="12" class="text-center">
-                    <span>{{item}}</span>
+                    <span>{{item.busiTime}}</span>
                   </van-col>
                   <van-col span="12" class="text-center">
-                    <span>2</span>
+                    <van-tag plain type="primary" v-for="(itemChild, index) in item.checkItemMap" :key="index">{{itemChild.checkItem}}</van-tag>
                   </van-col>
                 </van-row>
-                <van-row v-else v-for="(item, index) in list">
+
+                <van-row  v-if="tag == 'credit' || tag == 'leave' || tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'puYes' || tag == 'puNo' || tag == 'doorIn' || tag == 'doorOut' || tag == 'late' || tag == 'unsign' || tag == 'early'" v-for="(item, index) in detailList" :key="index">
                   <van-col span="8" class="text-center">
-                    <span>{{item}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit' || tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{$moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.busiTime}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
-                    <span>2</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit'">{{item.str2}}({{item.str3}})</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{item.des}})</span>
+                    <span v-if="tag == 'lateDorm'">{{$t("晚归")}}</span>
+                    <span v-if="tag == 'unsignDorm'">{{$t("旷寝")}}</span>
+                    <span v-if="tag == 'longDorm'">{{$t("超长")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn' || tag == 'doorOut'">{{item.build_name}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.courseName}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
-                    <span>3</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit'">{{item.double1}}{{$t("分")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'leave'">{{item.double1}}{{$t("天")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'puYes' || tag == 'puNo'">{{item.str2}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">{{item.signLength/60}}{{$t("小时")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn'">{{$t("进入")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorOut'">{{$t("外出")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.section}}{{$t("节")}}</span>
                   </van-col>
                 </van-row>
               </van-list>
@@ -462,12 +477,15 @@
 <script>
 import AppLoading from './../components/AppLoading'
 import mixins from "../mixins/mixins";
+import {Notify} from "vant";
 export default {
   mixins: [mixins],
   components: {AppLoading},
   data(){
     return {
       list: [],
+      userInfo: {},
+      userId: '',
       loading: false,
       finished: false,
       showLoading: false,
@@ -495,11 +513,47 @@ export default {
         {name: '2020第三学期', id: 3},
         {name: '2020第四学期', id: 4},
         {name: '2020第五学期', id: 5},
-      ]
+      ],
+
+      scoreSum: 0,
+      scoreAddCount: 0,
+      scoreMinusCount: 0,
+      rollCallActualNum: 0,
+      rollCallLateNum: 0,
+      rollCallUnSignNum: 0,
+      rollCallLeaveEarlyNum: 0,
+      rollCallActualRate: 0,
+      leaveSum: 0,
+      leaveCount: 0,
+      leaveRate: 0,
+      rollCallBedUnSignNum: 0,
+      rollCallBedLateNum: 0,
+      rollCallBedLateLongNum: 0,
+      rollCallBedActualRate: 0,
+      punishRate: 0,
+      punishRewardCount: 0,
+      punishSanctionCount: 0,
+      dormRate: 0,
+      dormLowCountTotal: 0,
+      dormPassCountTotal: 0,
+      inDoorSum: 0,
+      outDoorSum: 0,
+      doorSum: 0,
+      qtztRate: 0,
+
+      selType: '',
+      selCurrenSum: 0,
+      selTotalSum: 0,
+      detailUrl : '',
+      detailList: [],
+      page: 0,
+      totalPage: 0
     }
   },
   created() {
     this.hh();
+    this.init();
+    this.initConfig();
   },
   methods: {
     hh(){
@@ -507,47 +561,141 @@ export default {
         this.styleObject.height = window.innerHeight - 245 + 'px';
       }
     },
-    showDetail(event, type, subType){
+    init(){
+      this.userId = this.$route.query.userId;
+    },
+    async initConfig() {
+      await this.getCampusInfo();
+      this.initStatic();
+      this.initYearInfo();
+      //this.initTest();
+    },
+    initStatic(){
+      let data = {
+        userId: this.userId,
+        termId: this.campusTermId
+      };
+      //console.log(data);
+      this.showLoading = true;
+      this.$axios.get(this.campusUrl + "/course/quantization/user-stat", {params: data}).then(res =>{
+        if (res.data.code == 200){
+          this.userInfo = res.data.data.userInfo;
+          this.scoreSum = res.data.data.scoreSum;
+          this.scoreAddCount = res.data.data.scoreAddCount;
+          this.scoreMinusCount = res.data.data.scoreMinusCount;
+          this.rollCallActualNum = res.data.data.rollCallActualNum;
+          this.rollCallLateNum = res.data.data.rollCallLateNum;
+          this.rollCallUnSignNum = res.data.data.rollCallUnSignNum;
+          this.rollCallLeaveEarlyNum = res.data.data.rollCallLeaveEarlyNum;
+          this.rollCallActualRate = res.data.data.rollCallActualRate;
+          this.leaveSum = res.data.data.leaveSum;
+          this.leaveCount = res.data.data.leaveCount;
+          this.leaveRate = res.data.data.leaveRate;
+          this.rollCallBedUnSignNum = res.data.data.rollCallBedUnSignNum;
+          this.rollCallBedLateNum = res.data.data.rollCallBedLateNum;
+          this.rollCallBedLateLongNum = res.data.data.rollCallBedLateLongNum;
+          this.rollCallBedActualRate = res.data.data.rollCallBedActualRate;
+          this.punishRate = res.data.data.punishRate;
+          this.punishRewardCount = res.data.data.punishRewardCount;
+          this.punishSanctionCount = res.data.data.punishSanctionCount;
+          this.dormRate = res.data.data.dormRate;
+          this.dormLowCountTotal = res.data.data.dormLowCountTotal;
+          this.dormPassCountTotal = res.data.data.dormPassCountTotal;
+          this.inDoorSum = res.data.data.inDoorSum;
+          this.outDoorSum = res.data.data.outDoorSum;
+          this.doorSum = res.data.data.inDoorSum + res.data.data.outDoorSum;
+          this.qtztRate = res.data.data.qtztRate;
+        }else {
+          Notify({ type: 'warning', message: res.data.desc });
+        }
+
+        this.showLoading = false;
+      });
+    },
+    initTest(){
+      /*let data = {
+        userId: this.userId
+      };
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", this.campusUrl + "/localserver/api/corsTest");
+      xhr.withCredentials = true; // 设置跨域 Cookie
+      xhr.send()*/
+    },
+    initYearInfo(){
+      let data = {};
+
+      this.$axios.get(this.campusUrl + "/course/quantization//query-term-list", {params: data}).then(res =>{
+        console.log(res);
+        this.yearList = res.data.data;
+      });
+    },
+    showDetail(event, type, subType, selType, selCurrent){
+      let _self = this;
       this.tag = type;
       this.typeText = subType;
+      this.selType = selType;
+      this.selCurrenSum = selCurrent;
       if (type == "credit"){
         this.type = this.$t("素质学分");
+        this.selTotalSum = this.scoreSum;
+        this.detailUrl = '/course/quantization/user-score-page';
       }else if (type == "late"){
         this.type = this.$t("课堂考勤");
+        this.detailUrl = '/course/quantization/user-roll-call-page';
       }else if (type == "unsign"){
         this.type = this.$t("课堂考勤");
+        this.detailUrl = '/course/quantization/user-roll-call-page';
       }else if (type == "early"){
         this.type = this.$t("课堂考勤");
+        this.detailUrl = '/course/quantization/user-roll-call-page';
       }else if (type == "leave"){
         this.type = this.$t("日常请假");
+        this.selTotalSum = this.leaveSum;
+        this.detailUrl = '/course/quantization/user-leave-page';
       }else if (type == "lateDorm"){
         this.type = this.$t("归寝签到");
+        this.detailUrl = '/course/quantization/user-roll-call-bed-page';
       }else if (type == "unsignDorm"){
         this.type = this.$t("归寝签到");
+        this.detailUrl = '/course/quantization/user-roll-call-bed-page';
       }else if (type == "longDorm"){
         this.type = this.$t("归寝签到");
+        this.detailUrl = '/course/quantization/user-roll-call-bed-page';
       }else if (type == "puYes"){
         this.type = this.$t("奖惩统计");
+        this.detailUrl = '/course/quantization/user-punish-page';
       }else if (type == "puNo"){
         this.type = this.$t("奖惩统计");
+        this.detailUrl = '/course/quantization/user-punish-page';
       }else if (type == "quYes"){
         this.type = this.$t("内务评比");
+        this.detailUrl = '/course/quantization/user-quantization-page';
       }else if (type == "quNo"){
         this.type = this.$t("内务评比");
+        this.detailUrl = '/course/quantization/user-quantization-page';
       }else if (type == "doorIn"){
         this.type = this.$t("门禁通行");
+        this.detailUrl = '/course/quantization/user-access-control-page';
       }else if (type == "doorOut"){
         this.type = this.$t("门禁通行");
+        this.detailUrl = '/course/quantization/user-access-control-page';
       }
       this.loading = true;
-      this.onLoad();
+
+      setTimeout(function () {
+        _self.onLoad();
+      },800);
+
       this.show = true;
     },
     close(){
-      this.list = [];
+      //this.list = [];
+      this.detailList = [];
       this.refreshing = false;
       this.loading = false;
-
+      this.page = 0;
+      this.timeText = "";
+      this.currentDate = new Date();
       this.show = false;
     },
     showPickerOpr(){
@@ -555,11 +703,17 @@ export default {
     },
     clearPickerOpr(){
       this.timeText = "";
+      this.page = 1;
+      this.detailList = [];
+      this.initDetailList();
     },
     savePicker(event){
       let dateTimeYear = this.$moment(this.currentDate).format("yyyy");
       let dateTimeMonth = this.$moment(this.currentDate).format("M");
       this.timeText = this.$moment(this.currentDate).format("YYYY-MM-DD");
+      this.page = 1;
+      this.detailList = [];
+      this.initDetailList();
       this.showPicker = false;
     },
     cancelPicker(event){
@@ -575,43 +729,97 @@ export default {
     selectYear(event, item){
       this.yearStr = item.name;
       this.yearId = item.id;
+      this.campusTermId = item.id;
+      this.initStatic();
       this.showYear = false;
     },
     returnList(){
       this.$router.push({
-        path: '/userList'
+        path: '/userList',
+        query: {
+          list: JSON.stringify(this.userList),
+          campusName: this.campusName
+        }
       });
     },
     noticeList(){
       this.$router.push({
-        path: '/noticeList'
+        path: '/noticeList',
+        query: {
+          list: JSON.stringify(this.userList),
+          campusName: this.campusName,
+          userId: this.$route.query.userId,
+        }
       });
     },
     onRefresh(){
       // 清空列表数据
-      this.finished = false;
-
-      // 重新加载数据
-      // 将 loading 设置为 true，表示处于加载状态
-      this.loading = true;
-      this.onLoad();
+      this.loading = false;
+      this.page = 0;
+      this.detailList = [];
+      this.initDetailList();
     },
     onLoad() {
-      setTimeout(() => {
-        if (this.refreshing) {
-          this.list = [];
-          this.refreshing = false;
-        }
+      // 异步更新数据
+      if (this.page != 0 && this.totalPage == this.page) {
+        this.finished = true;
+      } else {
+        this.page = this.page + 1;
+        this.initDetailList();
+        this.finished = false;
+      }
+    },
+    initDetailList(){
+      let _self = this;
+      let data = {
+        page: this.page,
+        num: 20,
+        time: this.timeText,
+        userId: this.userId,
+        termId: this.campusTermId
+      };
+      if (this.tag == "credit"){
+        data['str1'] = this.selType;
+      }else if (this.tag == "late"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "unsign"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "early"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "leave"){
 
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
-        }
+      }else if (this.tag == "lateDorm"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "unsignDorm"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "longDorm"){
+        data['signStatus'] = this.selType;
+      }else if (this.tag == "puYes"){
+        data['str1'] = this.selType;
+      }else if (this.tag == "puNo"){
+        data['str1'] = this.selType;
+      }else if (this.tag == "quYes"){
+        data['checkStatus'] = true;
+      }else if (this.tag == "quNo"){
+        data['checkStatus'] = false;
+      }else if (this.tag == "doorIn"){
+        data['deviceSceneSubType'] = 1;
+      }else if (this.tag == "doorOut"){
+        data['deviceSceneSubType'] = 2;
+      }
+      this.$axios.get(this.campusUrl + this.detailUrl, {params: data}).then(res => {
+        console.log(res);
+        this.refreshing = false;
         this.loading = false;
+        _self.detailList = _self.detailList.concat(res.data.data.list);
 
-        if (this.list.length >= 40) {
+        _self.totalPage = res.data.data.pageNum;
+        _self.page = res.data.data.currentPage;
+
+        if (this.totalPage == this.page) {
           this.finished = true;
         }
-      }, 1000);
+      });
     }
   }
 }

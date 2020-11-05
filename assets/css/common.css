@@ -306,6 +306,8 @@ body{
   text-overflow:ellipsis;
   position: relative;
   top: 0px;
+  max-width: 100px;
+  display: inline-block;
 }
 .inline-block{
   display: inline-block;

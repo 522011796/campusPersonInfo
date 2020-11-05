@@ -4,11 +4,20 @@ import {Notify} from "vant";
 export default {
   data(){
     return {
-      campusUrl: ''
+      campusUrl: '',
+      campusTermId: '',
+      userList: [],
+      campusName: ''
     }
   },
   created() {
     this.initCampusConfig();
+    if (this.$route.query.list && this.$route.query.list != ''){
+      this.userList = JSON.parse(this.$route.query.list);
+    }
+    if (this.$route.query.campusName){
+      this.campusName = this.$route.query.campusName;
+    }
   },
   methods: {
     initCampusConfig(){
@@ -27,7 +36,14 @@ export default {
           }
         }
       }
-    }
+    },
+    async getCampusInfo() {
+      let params = {};
+      await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
+        //console.log(res);
+        this.campusTermId = res.data.data.currentTermId;
+      });
+    },
   }
 }
 </script>

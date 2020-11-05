@@ -48,9 +48,9 @@
           @load="onLoad"
         >
 
-          <div class="notice-content" v-for="item in list" :key="item">
+          <div class="notice-content" v-for="item in list" :key="item.userId">
             <div class="notice-title">
-              <span>xxxxxx</span>
+              <span>{{item.realName}}</span>
             </div>
 
             <div class="notice-detail">
@@ -93,12 +93,16 @@ export default {
   },
   created() {
     this.hh();
+    this.init();
   },
   methods: {
     hh(){
       if (process.browser) {
         this.styleObject.height = window.innerHeight - 150 + 'px';
       }
+    },
+    init(){
+
     },
     tagChange(event, type){
       this.activeTag = type;
@@ -108,7 +112,12 @@ export default {
     },
     returnList(){
       this.$router.push({
-        path: '/userDetail'
+        path: '/userDetail',
+        query: {
+          list: JSON.stringify(this.userList),
+          campusName: this.campusName,
+          userId: this.$route.query.userId,
+        }
       });
     },
     onLoad() {

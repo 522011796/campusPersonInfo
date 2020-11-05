@@ -32,7 +32,7 @@
       <div class="custom-divider-login">
         <van-divider :style="{padding: '0 5px' }" />
       </div>
-      <van-field autocomplete="off" v-model="code " :placeholder="$t('请输入验证码')" class="color-FFFFFF">
+      <van-field autocomplete="off" v-model="code" :placeholder="$t('请输入验证码')" class="color-FFFFFF">
         <span slot="left-icon" class="login-content-form-icon"><i class="fa fa-lock" style="color: #ffffff;font-size: 20px;position: relative; top: 5px;"></i></span>
         <template #button>
           <van-button size="mini" plain type="primary" v-if="!timeDownStatus" @click="sendPhone()" style="min-width: 80px">
@@ -64,7 +64,6 @@ export default {
   mixins: [mixins],
   data(){
     return {
-      campusName: '',
       username: '',
       password: '',
       phone: '',
@@ -139,11 +138,28 @@ export default {
     },
     sendPhone(){
       let phoneReg = /^1[2345789]\d{9}$/;
+      if (!this.campusUrl || this.campusUrl == ""){
+        Toast(this.$t("请选择学院！"));
+        return;
+      }
+
       if (!phoneReg.test(this.phone)){
         Toast(this.$t("手机号格式错误！"));
         return;
       }
-      this.timeDownStatus = true;
+
+      let data = {phone: this.phone};
+      data = this.$qs.stringify(data);
+
+      this.$axios.post(this.campusUrl + "/user/captcha/login/sms", data).then(res => {
+        console.log(res);
+        if (res.data.code == 200){
+          Notify({ type: 'warning', message: res.data.desc });
+          this.timeDownStatus = true;
+        }else {
+          Notify({ type: 'warning', message: res.data.desc });
+        }
+      });
     },
     finish(){
       this.timeDownStatus = false;
@@ -159,16 +175,31 @@ export default {
         return;
       }
       let data = {
-        campusName: '',
-        phone: '',
-        code: ''
+        accountType: 4,
+        //campusName: '',
+        account: this.phone,
+        password: this.code
       };
-      console.log(this.campusUrl + "/user/user/getSess");
-      this.$axios.get(this.campusUrl + "/user/user/getSess").then(res => {
-        console.log(res);
-      });
-      this.$router.push({
-        path: '/userList'
+      data = this.$qs.stringify(data);
+      this.$axios.post(this.campusUrl + "/user/login", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then((res) => {
+        console.log(111,res);
+        if (res && res.data.code == 200){
+          if (res.data.data.userType == 8){
+            console.log(res.data.data.studentList);
+            let studentList = res.data.data.studentList;
+            this.$router.push({
+              path: '/userList',
+              query: {
+                list: JSON.stringify(studentList),
+                campusName: this.campusName
+              }
+            });
+          }else if (res.data.userType == 5){
+
+          }
+        }else {
+          Notify({ type: 'warning', message: res.data.desc });
+        }
       });
 
       //移除时间监听

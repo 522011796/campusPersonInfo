@@ -6,7 +6,7 @@
 
         </span>
           <span class="content-title-text">
-          xxxxxxxxxxxx学校
+          {{campusName}}
         </span>
       </div>
       <div class="pull-right content-title-btn">
@@ -16,27 +16,28 @@
     </div>
 
     <div class="margin-top-10">
-      <div class="content-info" v-for="n in 2">
-        <div class="info-bg margin-bottom-20" @click="detail()">
+      <div class="content-info" v-for="(item, index) in list" :key="item.userId">
+        <div class="info-bg margin-bottom-20" @click="detail($event, item)">
           <van-row class="info-content">
             <van-col span="6">
-              <img width="60" height="70" :src="require('./../static/img/default.png')" />
+              <img width="60" v-if="item.photoSimple" height="70" :src="item.photoSimple" />
+              <img width="60" v-else height="70" :src="require('./../static/img/default.png')" />
             </van-col>
             <van-col span="9">
               <div class="margin-top-5">
-                <span class="font-size-18 font-blod">xxxxxx(在读)</span>
+                <span class="font-size-18 font-blod">{{item.realName}}</span>
               </div>
               <div class="margin-top-20">
-                <span class="font-size-18">xxxxxx</span>
+                <span class="font-size-18">{{item.className}}</span>
               </div>
             </van-col>
             <van-col span="9">
               <div class="margin-top-5 text-right">
-                <span class="font-size-18 font-blod">xxxxxx</span>
+                <span class="font-size-18 font-blod">{{item.studentId}}</span>
               </div>
-              <div class="margin-top-20 text-right">
-                <span class="font-size-18">xxxxxx</span>
-              </div>
+              <!--<div class="margin-top-20 text-right">
+                <span class="font-size-18">{{item.collegeName}}</span>
+              </div>-->
             </van-col>
           </van-row>
         </div>
@@ -47,26 +48,49 @@
 
 <script>
 import mixins from "../mixins/mixins";
+import {Notify} from "vant";
 export default {
   mixins: [mixins],
   data(){
     return {
-
+      list: [],
     }
   },
   created() {
-
+    this.init();
   },
   methods: {
-    detail() {
-      console.log(this.campusUrl + "/user/user/getSess");
+    init(){
+      console.log(this.userList.length);
+      if (this.userList.length > 0){
+        this.list = this.userList;
+      }else {
+        this.$router.push({
+          path: '/login'
+        });
+      }
+      this.campusName = this.campusName;
+    },
+    detail(event, item) {
+      //console.log(this.campusUrl + "/user/user/getSess");
       this.$router.push({
-        path: '/userDetail'
+        path: '/userDetail',
+        query: {
+          userId: item.userId,
+          list: JSON.stringify(this.list),
+          campusName: this.campusName
+        }
       });
     },
     logout(){
-      this.$router.push({
-        path: '/login'
+      this.$axios.post(this.campusUrl + "/user/logout", {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
+        if (res.data.code == 200){
+          this.$router.push({
+            path: '/login'
+          });
+        }else {
+          Notify({ type: 'warning', message: res.data.desc });
+        }
       });
     }
   }
