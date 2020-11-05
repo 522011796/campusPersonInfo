@@ -64,12 +64,15 @@
             </van-col>
             <van-col span="9">
               <div class="margin-top-5">
+                <span>{{$t("学号")}}: </span>
                 <span>{{userInfo.student_id}}</span>
               </div>
               <div class="margin-top-5">
+                <span>{{$t("宿舍")}}: </span>
                 <span>{{userInfo.dormitory_no}}</span>
               </div>
               <div class="margin-top-5">
+                <span>{{$t("手机")}}: </span>
                 <span>{{userInfo.phone}}</span>
               </div>
             </van-col>
