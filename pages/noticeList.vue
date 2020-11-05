@@ -48,7 +48,7 @@
           @load="onLoad"
         >
 
-          <div class="notice-content" v-for="item in list" :key="item.userId">
+          <div class="notice-content" v-for="item in detailList" :key="item.id">
             <div class="notice-title">
               <span>{{item.realName}}</span>
             </div>
@@ -78,7 +78,7 @@ export default {
   components: {AppLoading},
   data(){
     return {
-      list: [],
+      detailList: [],
       loading: false,
       finished: false,
       refreshing: false,
@@ -88,7 +88,11 @@ export default {
         'height': '',
         'position': 'relative',
         'overflow-y': 'auto'
-      }
+      },
+      page: 0,
+      totalPage: 0,
+      type: 1,
+      classId: ''
     }
   },
   created() {
@@ -102,13 +106,37 @@ export default {
       }
     },
     init(){
+      let _self = this;
+      this.classId = this.$route.query.classId ? this.$route.query.classId : 52;
+      let data = {
+        page: this.page +1,
+        num : 20,
+        actionType: this.type,
+        draft: false,
+        classId: this.classId,
+        readed: '-1'
+      };
+      data = this.$qs.stringify(data);
+      this.$axios.post(this.campusUrl + '/user/message/userMsg/groupByTime', data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
+        console.log(res);
+        this.refreshing = false;
+        this.loading = false;
+        _self.detailList = _self.detailList.concat(res.data.data.list);
 
+        _self.totalPage = res.data.data.pageNum;
+        _self.page = res.data.data.currentPage;
+
+        if (this.totalPage == this.page) {
+          this.finished = true;
+        }
+      });
     },
     tagChange(event, type){
       this.activeTag = type;
-      //this.showLoading = true;
-      this.list = [];
-      this.onLoad();
+      this.type = type;
+      this.detailList = [];
+      this.page = 0;
+      this.init();
     },
     returnList(){
       this.$router.push({
@@ -120,32 +148,22 @@ export default {
         }
       });
     },
-    onLoad() {
-      setTimeout(() => {
-        if (this.refreshing) {
-          this.list = [];
-          this.refreshing = false;
-        }
-
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
-        }
-        this.loading = false;
-        //this.showLoading = false;
-
-        if (this.list.length >= 40) {
-          this.finished = true;
-        }
-      }, 1000);
-    },
-    onRefresh() {
+    onRefresh(){
       // 清空列表数据
-      this.finished = false;
-
-      // 重新加载数据
-      // 将 loading 设置为 true，表示处于加载状态
-      this.loading = true;
-      this.onLoad();
+      this.loading = false;
+      this.page = 0;
+      this.detailList = [];
+      this.init();
+    },
+    onLoad() {
+      // 异步更新数据
+      if (this.page != 0 && this.totalPage == this.page) {
+        this.finished = true;
+      } else {
+        this.page = this.page + 1;
+        this.init();
+        this.finished = false;
+      }
     }
   }
 }
