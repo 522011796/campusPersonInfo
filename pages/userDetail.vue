@@ -482,6 +482,7 @@
 import AppLoading from './../components/AppLoading'
 import mixins from "../mixins/mixins";
 import {Notify} from "vant";
+import { Toast } from 'vant';
 export default {
   mixins: [mixins],
   components: {AppLoading},
