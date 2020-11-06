@@ -48,20 +48,25 @@
           @load="onLoad"
         >
 
-          <div class="notice-content" v-for="item in detailList" :key="item.id">
-            <div class="notice-title">
-              <span>{{item.realName}}</span>
+          <div v-for="item in detailList" :key="item.id">
+            <div style="padding: 5px 5px; color: #ffffff; font-size: 15px; font-weight: bold;margin-bottom: 5px">
+              <span>{{item.date}}</span>
             </div>
+            <div class="notice-content" v-for="(itemChild, indexChild) in item.list" :key="itemChild.id" @click="detailMsg($event, itemChild)">
+              <div class="notice-title">
+                <div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%">{{itemChild.title}}</div>
+              </div>
 
-            <div class="notice-detail">
-              <span>xxxxxxxxxxxx</span>
-            </div>
+              <div class="notice-detail">
+                <div style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;width: 100%">{{itemChild.title_desc}}</div>
+              </div>
 
-            <div class="notice-time">
+              <div class="notice-time">
               <span>
                 <i class="fa fa-clock-o"></i>
-                <label>xxxxxx</label>
+                <label>{{$moment(itemChild.create_time).format('HH:mm:ss')}}</label>
               </span>
+              </div>
             </div>
           </div>
         </van-list>
@@ -84,6 +89,7 @@ export default {
       refreshing: false,
       showLoading: false,
       activeTag: 1,
+      userId: '',
       styleObject: {
         'height': '',
         'position': 'relative',
@@ -107,17 +113,19 @@ export default {
     },
     init(){
       let _self = this;
-      this.classId = this.$route.query.classId ? this.$route.query.classId : 52;
+      this.classId = this.$route.query.classId;
+      this.userId = this.$route.query.userId;
       let data = {
         page: this.page +1,
         num : 20,
         actionType: this.type,
-        draft: false,
-        classId: this.classId,
-        readed: '-1'
+        userId: this.userId
       };
+      /*if(this.type == 2){
+        data['classId'] = this.classId;
+      }*/
       data = this.$qs.stringify(data);
-      this.$axios.post(this.campusUrl + '/user/message/userMsg/groupByTime', data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
+      this.$axios.post(this.campusUrl + '/user/message/userMsg/groupByTime2', data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
         console.log(res);
         this.refreshing = false;
         this.loading = false;
@@ -164,6 +172,15 @@ export default {
         this.init();
         this.finished = false;
       }
+    },
+    detailMsg(event, item){
+      this.$router.push({
+        path: '/noticeDetailList',
+        query: {
+          msgId: item.id,
+          userId: this.$route.query.userId,
+        }
+      });
     }
   }
 }

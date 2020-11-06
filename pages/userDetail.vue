@@ -46,7 +46,8 @@
         <div class="detail-block-userinfo margin-top-10">
           <van-row>
             <van-col span="5">
-              <img width="60" height="70" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+              <img width="60" height="70" v-if="userInfo.photo_simple && userInfo.photo_simple != ''" :src="userInfo.photo_simple" />
+              <img width="60" height="70" v-else :src="require('./../static/img/default.png')" />
             </van-col>
             <van-col span="9" class="padding-left-10">
               <div class="margin-top-5">
@@ -752,6 +753,7 @@ export default {
           list: JSON.stringify(this.userList),
           campusName: this.campusName,
           userId: this.$route.query.userId,
+          classId: this.userInfo.clasz
         }
       });
     },

@@ -339,3 +339,7 @@ body{
   -khtml-opacity: 0.9;
   opacity: 0.9;
 }
+.detail-content img{
+  max-height: 240px;
+  width: 100%;
+}

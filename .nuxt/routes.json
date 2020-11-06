@@ -14,6 +14,13 @@
     "_name": "_0147b7d8"
   },
   {
+    "name": "noticeDetailList",
+    "path": "/noticeDetailList",
+    "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/noticeDetailList.vue",
+    "chunkName": "pages/noticeDetailList",
+    "_name": "_11463fa8"
+  },
+  {
     "name": "noticeList",
     "path": "/noticeList",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/noticeList.vue",
