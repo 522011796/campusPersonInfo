@@ -426,24 +426,24 @@
 
                 <van-row  v-if="tag == 'credit' || tag == 'leave' || tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'puYes' || tag == 'puNo' || tag == 'doorIn' || tag == 'doorOut' || tag == 'late' || tag == 'unsign' || tag == 'early'" v-for="(item, index) in detailList" :key="index">
                   <van-col span="8" class="text-center">
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit' || tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{$moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.busiTime}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, $moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss'))" v-if="tag == 'credit' || tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{$moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.busiTime)" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.busiTime}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.add_time)" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit'">{{item.str2}}({{item.str3}})</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{item.des}})</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.str2+'('+item.str3+')')" v-if="tag == 'credit'">{{item.str2}}({{item.str3}})</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.des)" v-if="tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{item.des}})</span>
                     <span v-if="tag == 'lateDorm'">{{$t("晚归")}}</span>
                     <span v-if="tag == 'unsignDorm'">{{$t("旷寝")}}</span>
                     <span v-if="tag == 'longDorm'">{{$t("超长")}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn' || tag == 'doorOut'">{{item.build_name}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.courseName}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.build_name)" v-if="tag == 'doorIn' || tag == 'doorOut'">{{item.build_name}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.courseName)" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.courseName}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'credit'">{{item.double1}}{{$t("分")}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'leave'">{{item.double1}}{{$t("天")}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'puYes' || tag == 'puNo'">{{item.str2}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">{{item.signLength/60}}{{$t("小时")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.double1+'分')" v-if="tag == 'credit'">{{item.double1}}{{$t("分")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.double1+'天')" v-if="tag == 'leave'">{{item.double1}}{{$t("天")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.str2)" v-if="tag == 'puYes' || tag == 'puNo'">{{item.str2}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.signLength/60+'小时')" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">{{item.signLength/60}}{{$t("小时")}}</span>
                     <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn'">{{$t("进入")}}</span>
                     <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorOut'">{{$t("外出")}}</span>
                     <span class="content-td-maxwidth-inlineblock" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.section}}{{$t("节")}}</span>
@@ -774,6 +774,12 @@ export default {
         this.initDetailList();
         this.finished = false;
       }
+    },
+    detailPop(event, str){
+      Toast({
+        message: str,
+        position: 'top',
+      });
     },
     initDetailList(){
       let _self = this;
