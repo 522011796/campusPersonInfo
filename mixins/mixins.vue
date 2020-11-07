@@ -32,7 +32,6 @@ export default {
         this.campusJump = this.$route.query.campusType;
 
         if ((!this.campusUrl || this.campusUrl == "") && status != "jump"){
-          console.log(111333);
           localStorage.removeItem("url");
           localStorage.removeItem("name");
 
@@ -44,8 +43,6 @@ export default {
             return;
           }
         }else if (status == "jump"){
-          console.log(2222);
-          console.log(1111, url);
           localStorage.setItem("url", url);
           localStorage.setItem("name", name);
         }
@@ -53,12 +50,15 @@ export default {
     },
     async getCampusInfo() {
       let params = {};
-      await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
-        console.log(res);
-        if (res.data.data != null){
-          this.campusTermId = res.data.data.currentTermId;
-        }
-      });
+      if (process.browser) {
+        this.campusUrl = localStorage.getItem("url");
+        await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
+          console.log(res);
+          if (res.data.data != null){
+            this.campusTermId = res.data.data.currentTermId;
+          }
+        });
+      }
     },
   }
 }

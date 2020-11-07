@@ -23,7 +23,7 @@ export default function({ $axios, redirect }) {
     }
   );
   $axios.onRequest(config => {
-    console.log('Making request to ' + config.url)
+    //console.log('Making request to ' + config.url)
   });
 
   // response interceptor
@@ -43,7 +43,6 @@ export default function({ $axios, redirect }) {
         } else if (res.data.code === 3022) {
           return res;
         } else if (res.data.code === 401) {
-          console.log(333333);
           redirect('/login');
           return res;
         } else if (res.data.code === 410) {

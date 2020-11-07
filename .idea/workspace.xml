@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="485b0077-8e07-4869-bc53-2544d0a2b9aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/axios.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mixins/mixins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mixins/mixins.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/userDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userDetail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/axios.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,7 +67,7 @@
       <workItem from="1604028985132" duration="19974000" />
       <workItem from="1604109555847" duration="62104000" />
       <workItem from="1604646558579" duration="1880000" />
-      <workItem from="1604712904285" duration="4550000" />
+      <workItem from="1604712904285" duration="6163000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604054123842</created>
@@ -156,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604648251949</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init">
+      <created>1604738535614</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604738535614</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,10 +175,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1604297857738" />
-    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604648251163">
+    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604738534003">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604648251163" />
+    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604738534003" />
     <state x="560" y="326" key="Github.ShareDialog" timestamp="1604053366164">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
@@ -183,10 +187,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="378" y="139" key="Github.UntrackedFilesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053371884" />
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604648253633">
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604738540958">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604648253633" />
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604738540958" />
     <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604108909274">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
