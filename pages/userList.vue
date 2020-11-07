@@ -61,7 +61,6 @@ export default {
   },
   methods: {
     init(){
-      console.log(this.userList.length);
       if (this.userList.length > 0){
         this.list = this.userList;
       }else {

@@ -126,7 +126,6 @@ export default {
       }*/
       data = this.$qs.stringify(data);
       this.$axios.post(this.campusUrl + '/user/message/userMsg/groupByTime2', data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
-        console.log(res);
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);

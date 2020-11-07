@@ -182,10 +182,9 @@ export default {
       };
       data = this.$qs.stringify(data);
       this.$axios.post(this.campusUrl + "/user/login", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then((res) => {
-        console.log(111,res);
         if (res && res.data.code == 200){
           if (res.data.data.userType == 8){
-            console.log(res.data.data.studentList);
+            //console.log(res.data.data.studentList);
             let studentList = res.data.data.studentList;
             this.$router.push({
               path: '/userList',
@@ -195,7 +194,14 @@ export default {
               }
             });
           }else if (res.data.userType == 5){
-
+            //console.log(res.data.data);
+            /*this.$router.push({
+              path: '/userDetail',
+              query: {
+                userId: item.userId,
+                campusName: this.campusName
+              }
+            });*/
           }
         }else {
           Notify({ type: 'warning', message: res.data.desc });

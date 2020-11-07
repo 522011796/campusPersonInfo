@@ -631,7 +631,6 @@ export default {
       let data = {};
 
       this.$axios.get(this.campusUrl + "/course/quantization//query-term-list", {params: data}).then(res =>{
-        console.log(res);
         this.yearList = res.data.data;
       });
     },
@@ -821,7 +820,6 @@ export default {
         data['deviceSceneSubType'] = 2;
       }
       this.$axios.get(this.campusUrl + this.detailUrl, {params: data}).then(res => {
-        console.log(res);
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);

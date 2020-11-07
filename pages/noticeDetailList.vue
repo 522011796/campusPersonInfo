@@ -81,7 +81,6 @@ export default {
       };
       this.showLoading = true;
       this.$axios.get(this.campusUrl + '/user/message/info', {params: data}).then(res => {
-        console.log(res);
         this.detail = res.data.data.message;
         this.showLoading = false;
       });
