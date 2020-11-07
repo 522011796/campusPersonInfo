@@ -5,7 +5,7 @@
       <van-row>
         <van-col span="3">
           <div class="margin-top-5">
-            <i class="fa fa-chevron-left" style="font-size: 22px;color: #ffffff" @click="returnList()"></i>
+            <i v-if="campusJump != 'jump'" class="fa fa-chevron-left" style="font-size: 22px;color: #ffffff" @click="returnList()"></i>
           </div>
         </van-col>
         <van-col span="18">
@@ -16,7 +16,7 @@
         </van-col>
         <van-col span="3">
           <div class="text-center margin-top-5">
-            <i class="fa fa-envelope-o" style="font-size: 22px;color: #ffffff" @click="noticeList"></i>
+            <i v-if="campusJump != 'jump'" class="fa fa-envelope-o" style="font-size: 22px;color: #ffffff" @click="noticeList"></i>
           </div>
         </van-col>
       </van-row>
@@ -570,6 +570,7 @@ export default {
       this.userId = this.$route.query.userId;
     },
     async initConfig() {
+      await this.initCampusConfig();
       await this.getCampusInfo();
       this.initStatic();
       this.initYearInfo();

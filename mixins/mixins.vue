@@ -7,7 +7,8 @@ export default {
       campusUrl: '',
       campusTermId: '',
       userList: [],
-      campusName: ''
+      campusName: '',
+      campusJump: ''
     }
   },
   created() {
@@ -23,7 +24,15 @@ export default {
     initCampusConfig(){
       if (process.client){
         this.campusUrl = localStorage.getItem("url");
-        if (!this.campusUrl || this.campusUrl == ""){
+
+        let url = this.$route.query.campusUrl;
+        let name = this.$route.query.campusName;
+        let status = this.$route.query.campusType;
+
+        this.campusJump = this.$route.query.campusType;
+
+        if ((!this.campusUrl || this.campusUrl == "") && status != "jump"){
+          console.log(111333);
           localStorage.removeItem("url");
           localStorage.removeItem("name");
 
@@ -34,14 +43,21 @@ export default {
             Notify({ type: 'warning', message: this.$t("用户信息失效，请刷新重新获取！") });
             return;
           }
+        }else if (status == "jump"){
+          console.log(2222);
+          console.log(1111, url);
+          localStorage.setItem("url", url);
+          localStorage.setItem("name", name);
         }
       }
     },
     async getCampusInfo() {
       let params = {};
       await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
-        //console.log(res);
-        this.campusTermId = res.data.data.currentTermId;
+        console.log(res);
+        if (res.data.data != null){
+          this.campusTermId = res.data.data.currentTermId;
+        }
       });
     },
   }

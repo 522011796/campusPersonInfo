@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="485b0077-8e07-4869-bc53-2544d0a2b9aa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.nuxt/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mixins/mixins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/mixins/mixins.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/userDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plugins/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/plugins/axios.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +69,8 @@
       <workItem from="1604023761579" duration="4921000" />
       <workItem from="1604028985132" duration="19974000" />
       <workItem from="1604109555847" duration="62104000" />
-      <workItem from="1604646558579" duration="1211000" />
+      <workItem from="1604646558579" duration="1880000" />
+      <workItem from="1604712904285" duration="4550000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604054123842</created>
@@ -144,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604647740103</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="init">
+      <created>1604648251949</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604648251949</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,10 +171,10 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1604297857738" />
-    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604647738712">
+    <state x="193" y="28" key="CommitChangelistDialog2" timestamp="1604648251163">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604647738712" />
+    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1604648251163" />
     <state x="560" y="326" key="Github.ShareDialog" timestamp="1604053366164">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
@@ -171,17 +183,17 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="378" y="139" key="Github.UntrackedFilesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053371884" />
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604647760858">
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2" timestamp="1604648253633">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604647760858" />
+    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1604648253633" />
     <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604108909274">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.805@0.23.1440.805" timestamp="1604108909274" />
-    <state x="378" y="182" width="683" height="486" key="find.popup" timestamp="1604625069860">
+    <state x="378" y="182" width="683" height="486" key="find.popup" timestamp="1604737671418">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
-    <state x="378" y="182" width="683" height="486" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1604625069860" />
+    <state x="378" y="182" width="683" height="486" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1604737671418" />
   </component>
 </project>
