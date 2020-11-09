@@ -16,7 +16,7 @@
     </div>
 
     <div class="margin-top-10">
-      <div class="content-info" v-for="(item, index) in list" :key="item.userId">
+      <div class="content-info" v-for="(item, index) in list" :key="index">
         <div class="info-bg margin-bottom-20" @click="detail($event, item)">
           <van-row class="info-content">
             <van-col span="6">
@@ -57,7 +57,8 @@ export default {
     }
   },
   created() {
-    this.init();
+    //this.init();
+    this.initData();
   },
   methods: {
     init(){
@@ -69,6 +70,12 @@ export default {
         });
       }
       this.campusName = this.campusName;
+    },
+    initData(){
+      this.$axios.get(this.campusUrl + "/user/loginUserInfo").then(res => {
+        console.log(res);
+        this.list = res.data.data.studentList;
+      });
     },
     detail(event, item) {
       //console.log(this.campusUrl + "/user/user/getSess");

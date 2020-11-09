@@ -8,7 +8,8 @@ export default {
       campusTermId: '',
       userList: [],
       campusName: '',
-      campusJump: ''
+      campusJump: '',
+      loginStatus: false
     }
   },
   created() {
@@ -50,12 +51,16 @@ export default {
     },
     async getCampusInfo() {
       let params = {};
+      this.loginStatus = false;
       if (process.browser) {
         this.campusUrl = localStorage.getItem("url");
         await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
           console.log(res);
           if (res.data.data != null){
             this.campusTermId = res.data.data.currentTermId;
+            if (res.data.code == 200){
+              this.loginStatus = true;
+            }
           }
         });
       }

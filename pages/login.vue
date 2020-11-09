@@ -81,13 +81,23 @@ export default {
       document.addEventListener("click", this.clickListPop);
     }
 
+    this.initLoginStatus();
     this.init();
     this.getCampusList();
   },
   methods: {
+    async initLoginStatus(){
+      await this.getCampusInfo();
+      if (this.loginStatus == true){
+        Toast(this.$t("系统检测你已经登录，正在执行跳转！"));
+        this.$router.push({
+          path: '/userList'
+        });
+      }
+    },
     init(){
       if (process.client){
-        if (localStorage.getItem("name") && localStorage.getItem("name") != ""){
+        if (localStorage.getItem("name") != "undefined" && localStorage.getItem("name") != ""){
           this.campusName = localStorage.getItem("name");
         }
       }
@@ -186,6 +196,7 @@ export default {
           if (res.data.data.userType == 8){
             //console.log(res.data.data.studentList);
             let studentList = res.data.data.studentList;
+
             this.$router.push({
               path: '/userList',
               query: {
