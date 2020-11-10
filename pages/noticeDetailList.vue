@@ -85,7 +85,9 @@ export default {
       };
       this.showLoading = true;
       this.$axios.get("/proxy/", {params: data}).then(res => {
-        this.detail = res.data.data.message;
+        if (res.data.data){
+          this.detail = res.data.data.message;
+        }
         this.showLoading = false;
       });
     },

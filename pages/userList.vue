@@ -77,7 +77,9 @@ export default {
         uri: '/user/loginUserInfo'
       };
       this.$axios.get("/proxy/", {params: data}).then(res => {
-        this.list = res.data.data.studentList;
+        if (res.data.data){
+          this.list = res.data.data.studentList;
+        }
       });
     },
     detail(event, item) {

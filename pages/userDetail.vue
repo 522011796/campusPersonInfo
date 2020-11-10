@@ -632,9 +632,11 @@ export default {
       };
       this.$axios.get("/proxy/", {params: data}).then(res =>{
         this.yearList = res.data.data;
-        for (let i = 0; i < this.yearList.length; i++){
-          if (this.yearList[i].id == this.campusTermId){
-            this.yearStr = this.yearList[i].name;
+        if (res.data.data){
+          for (let i = 0; i < res.data.data.length; i++){
+            if (res.data.data[i].id == this.campusTermId){
+              this.yearStr = res.data.data[i].name;
+            }
           }
         }
       });

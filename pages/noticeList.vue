@@ -129,10 +129,11 @@ export default {
       this.$axios.post("/proxy/", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
         this.refreshing = false;
         this.loading = false;
-        _self.detailList = _self.detailList.concat(res.data.data.list);
-
-        _self.totalPage = res.data.data.pageNum;
-        _self.page = res.data.data.currentPage;
+        if (res.data.data){
+          _self.detailList = _self.detailList.concat(res.data.data.list);
+          _self.totalPage = res.data.data.pageNum;
+          _self.page = res.data.data.currentPage;
+        }
 
         if (this.totalPage == this.page) {
           this.finished = true;
