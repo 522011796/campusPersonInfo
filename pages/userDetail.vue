@@ -770,7 +770,7 @@ export default {
       this.loading = false;
       this.page = 0;
       this.detailList = [];
-      this.initDetailList();
+      this.onLoad();
     },
     onLoad() {
       // 异步更新数据
@@ -835,7 +835,7 @@ export default {
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);
-
+        console.log(_self.detailList);
         _self.totalPage = res.data.data.pageNum;
         _self.page = res.data.data.currentPage;
 

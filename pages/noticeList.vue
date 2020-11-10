@@ -119,7 +119,7 @@ export default {
         domain: this.campusUrl,
         uri: '/user/message/userMsg/groupByTime2',
         data: JSON.stringify({
-          page: this.page +1,
+          page: this.page,
           num : 20,
           actionType: this.type,
           userId: this.userId
@@ -162,7 +162,7 @@ export default {
       this.loading = false;
       this.page = 0;
       this.detailList = [];
-      this.init();
+      this.onLoad();
     },
     onLoad() {
       // 异步更新数据
