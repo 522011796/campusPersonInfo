@@ -50,12 +50,15 @@ export default {
       }
     },
     async getCampusInfo() {
-      let params = {};
+      let params = {
+        domain: this.campusUrl,
+        uri: '/course/rollcall/campus/setting/now'
+      };
       this.loginStatus = false;
       if (process.browser) {
         this.campusUrl = localStorage.getItem("url");
-        await this.$axios.get(this.campusUrl + "/course/rollcall/campus/setting/now", {params: params}).then(res => {
-          console.log(res);
+        await this.$axios.get("/proxy/", {params: params}).then(res => {
+          //console.log(res);
           if (res.data.data != null){
             this.campusTermId = res.data.data.currentTermId;
             if (res.data.code == 200){

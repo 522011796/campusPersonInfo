@@ -111,7 +111,18 @@ export default {
       }
     },
     getCampusList(){
-      this.$axios.get("/proxy/campusmanage/appapi/get-campus-list?page=1&num=1000&format=json&appClientType=campus").then(res => {
+      /*this.$axios.get("/proxy/campusmanage/appapi/get-campus-list?page=1&num=1000&format=json&appClientType=campus").then(res => {
+        this.listLike = res.data.data.list;
+      });*/
+      let data = {
+        domain: 'http://campus.9451.com',
+        uri: '/campusmanage/appapi/get-campus-list',
+        data: JSON.stringify({
+          page: 1,
+          num: 1000
+        })
+      };
+      this.$axios.get("/proxy/", {params: data}).then(res => {
         this.listLike = res.data.data.list;
       });
     },
@@ -158,10 +169,16 @@ export default {
         return;
       }
 
-      let data = {phone: this.phone};
+      let data = {
+        domain: this.campusUrl,
+        uri: '/user/captcha/login/sms',
+        data: JSON.stringify({
+          phone: this.phone
+        })
+      };
       data = this.$qs.stringify(data);
 
-      this.$axios.post(this.campusUrl + "/user/captcha/login/sms", data).then(res => {
+      this.$axios.post("/proxy/", data).then(res => {
         console.log(res);
         if (res.data.code == 200){
           Notify({ type: 'warning', message: res.data.desc });
@@ -185,13 +202,17 @@ export default {
         return;
       }
       let data = {
-        accountType: 4,
-        //campusName: '',
-        account: this.phone,
-        password: this.code
+        domain: this.campusUrl,
+        uri: '/user/login',
+        data: JSON.stringify({
+          accountType: 4,
+          account: this.phone,
+          password: this.code
+        })
       };
+
       data = this.$qs.stringify(data);
-      this.$axios.post(this.campusUrl + "/user/login", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then((res) => {
+      this.$axios.post("/proxy/", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then((res) => {
         if (res && res.data.code == 200){
           if (res.data.data.userType == 8){
             //console.log(res.data.data.studentList);

@@ -72,8 +72,11 @@ export default {
       this.campusName = this.campusName;
     },
     initData(){
-      this.$axios.get(this.campusUrl + "/user/loginUserInfo").then(res => {
-        console.log(res);
+      let data = {
+        domain: this.campusUrl,
+        uri: '/user/loginUserInfo'
+      };
+      this.$axios.get("/proxy/", {params: data}).then(res => {
         this.list = res.data.data.studentList;
       });
     },
@@ -89,7 +92,12 @@ export default {
       });
     },
     logout(){
-      this.$axios.post(this.campusUrl + "/user/logout", {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
+      let data = {
+        domain: this.campusUrl,
+        uri: '/user/logouts'
+      };
+      data = this.$qs.stringify(data);
+      this.$axios.post("/proxy/", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
         if (res.data.code == 200){
           this.$router.push({
             path: '/login'

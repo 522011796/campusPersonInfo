@@ -75,12 +75,16 @@ export default {
       let _self = this;
       this.msgId = this.$route.query.msgId;
       let data = {
-        page: 1,
-        num : 20,
-        msgId: this.msgId
+        domain: this.campusUrl,
+        uri: '/user/message/info',
+        data: JSON.stringify({
+          page: 1,
+          num : 20,
+          msgId: this.msgId
+        })
       };
       this.showLoading = true;
-      this.$axios.get(this.campusUrl + '/user/message/info', {params: data}).then(res => {
+      this.$axios.get("/proxy/", {params: data}).then(res => {
         this.detail = res.data.data.message;
         this.showLoading = false;
       });
@@ -90,6 +94,7 @@ export default {
         path: '/noticeList',
         query: {
           userId: this.$route.query.userId,
+          campusName: this.campusName,
         }
       });
     }

@@ -510,15 +510,9 @@ export default {
       minDate: new Date(2010, 0, 1),
       maxDate: new Date(2055, 11, 31),
       currentDate: new Date(),
-      yearStr: '2020第一学期',
+      yearStr: '',
       yearId: '',
-      yearList: [
-        {name: '2020第一学期', id: 1},
-        {name: '2020第二学期', id: 2},
-        {name: '2020第三学期', id: 3},
-        {name: '2020第四学期', id: 4},
-        {name: '2020第五学期', id: 5},
-      ],
+      yearList: [],
 
       scoreSum: 0,
       scoreAddCount: 0,
@@ -578,12 +572,16 @@ export default {
     },
     initStatic(){
       let data = {
-        userId: this.userId,
-        termId: this.campusTermId
+        domain: this.campusUrl,
+        uri: '/course/quantization/user-stat',
+        data: JSON.stringify({
+          userId: this.userId,
+          termId: this.campusTermId
+        })
       };
       //console.log(data);
       this.showLoading = true;
-      this.$axios.get(this.campusUrl + "/course/quantization/user-stat", {params: data}).then(res =>{
+      this.$axios.get("/proxy/", {params: data}).then(res =>{
         if (res.data.code == 200){
           this.userInfo = res.data.data.userInfo;
           this.scoreSum = res.data.data.scoreSum;
@@ -628,10 +626,17 @@ export default {
       xhr.send()*/
     },
     initYearInfo(){
-      let data = {};
-
-      this.$axios.get(this.campusUrl + "/course/quantization//query-term-list", {params: data}).then(res =>{
+      let data = {
+        domain: this.campusUrl,
+        uri: '/course/quantization//query-term-list'
+      };
+      this.$axios.get("/proxy/", {params: data}).then(res =>{
         this.yearList = res.data.data;
+        for (let i = 0; i < this.yearList.length; i++){
+          if (this.yearList[i].id == this.campusTermId){
+            this.yearStr = this.yearList[i].name;
+          }
+        }
       });
     },
     showDetail(event, type, subType, selType, selCurrent){
@@ -790,6 +795,10 @@ export default {
         userId: this.userId,
         termId: this.campusTermId
       };
+      let params = {
+        domain: this.campusUrl,
+        uri: this.detailUrl
+      };
       if (this.tag == "credit"){
         data['str1'] = this.selType;
       }else if (this.tag == "late"){
@@ -819,7 +828,8 @@ export default {
       }else if (this.tag == "doorOut"){
         data['deviceSceneSubType'] = 2;
       }
-      this.$axios.get(this.campusUrl + this.detailUrl, {params: data}).then(res => {
+      params['data'] = JSON.stringify(data);
+      this.$axios.get("/proxy/", {params: params}).then(res => {
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);

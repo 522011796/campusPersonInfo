@@ -116,16 +116,17 @@ export default {
       this.classId = this.$route.query.classId;
       this.userId = this.$route.query.userId;
       let data = {
-        page: this.page +1,
-        num : 20,
-        actionType: this.type,
-        userId: this.userId
+        domain: this.campusUrl,
+        uri: '/user/message/userMsg/groupByTime2',
+        data: JSON.stringify({
+          page: this.page +1,
+          num : 20,
+          actionType: this.type,
+          userId: this.userId
+        })
       };
-      /*if(this.type == 2){
-        data['classId'] = this.classId;
-      }*/
       data = this.$qs.stringify(data);
-      this.$axios.post(this.campusUrl + '/user/message/userMsg/groupByTime2', data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
+      this.$axios.post("/proxy/", data, {headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}}).then(res => {
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);
@@ -178,6 +179,7 @@ export default {
         query: {
           msgId: item.id,
           userId: this.$route.query.userId,
+          campusName: this.campusName
         }
       });
     }
