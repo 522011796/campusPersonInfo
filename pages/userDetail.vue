@@ -123,22 +123,31 @@
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
+              <div style="margin-bottom: 10px">
+                <span>
+                  <label>{{$t("出勤")}}</label>
+                  <label>
+                    <van-button plain size="mini" type="primary" @click="showDetail($event, 'actual', '出勤', '1', rollCallActualNum)">{{rollCallActualNum}}{{$t("节")}}</van-button>
+                  </label>
+                </span>
+              </div>
+
               <span>
                 <label>{{$t("迟到")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到', '3', rollCallLateNum)">{{rollCallLateNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到', '3', rollCallLateNum)">{{rollCallLateNum}}{{$t("节")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("旷课")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课', '0', rollCallUnSignNum)">{{rollCallUnSignNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课', '0', rollCallUnSignNum)">{{rollCallUnSignNum}}{{$t("节")}}</van-button>
                 </label>
               </span>
               <span class="margin-left-10">
                 <label>{{$t("早退")}}</label>
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退', '4', rollCallLeaveEarlyNum)">{{rollCallLeaveEarlyNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退', '4', rollCallLeaveEarlyNum)">{{rollCallLeaveEarlyNum}}{{$t("节")}}</van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总出勤")}}</span>
@@ -179,6 +188,14 @@
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
+              <div style="margin-bottom: 10px">
+                <span>
+                  <label>{{$t("归寝")}}</label>
+                  <label>
+                    <van-button plain size="mini" type="primary" @click="showDetail($event, 'actualDorm', '归寝', '1', rollCallBedActualNum)">{{rollCallLateNum}}{{$t("次")}}</van-button>
+                  </label>
+                </span>
+              </div>
               <span>
                 <label>{{$t("晚归")}}</label>
                 <label>
@@ -318,7 +335,7 @@
 
           <span class="detail-block-list-text color-ff976a">
             {{selCurrenSum}}
-            <label v-if="tag=='credit' || tag=='leave' || tag=='lateDorm' || tag=='lateUnsign' || tag=='lateLong' || tag=='puYes' || tag=='quYes' || tag=='puNo' || tag=='quNo' || tag=='doorIn' || tag=='doorOut' || tag == 'unsignDorm' || tag == 'longDorm'">次</label>
+            <label v-if="tag=='credit' || tag=='leave' || tag == 'actualDorm' || tag=='lateDorm' || tag=='lateUnsign' || tag=='lateLong' || tag=='puYes' || tag=='quYes' || tag=='puNo' || tag=='quNo' || tag=='doorIn' || tag=='doorOut' || tag == 'unsignDorm' || tag == 'longDorm'">次</label>
             <label v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">节</label>
           </span>
 
@@ -342,7 +359,7 @@
               <span>{{$t("分数")}}</span>
             </van-col>
           </van-row>
-          <van-row v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">
+          <van-row v-if="tag == 'actual' || tag == 'late' || tag == 'unsign' || tag == 'early'">
             <van-col span="8" class="text-center">
               <span>{{$t("日期")}}</span>
             </van-col>
@@ -364,7 +381,7 @@
               <span>{{$t("时长")}}</span>
             </van-col>
           </van-row>
-          <van-row v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">
+          <van-row v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'actualDorm'">
             <van-col span="8" class="text-center">
               <span>{{$t("日期")}}</span>
             </van-col>
@@ -424,10 +441,10 @@
                   </van-col>
                 </van-row>
 
-                <van-row  v-if="tag == 'credit' || tag == 'leave' || tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'puYes' || tag == 'puNo' || tag == 'doorIn' || tag == 'doorOut' || tag == 'late' || tag == 'unsign' || tag == 'early'" v-for="(item, index) in detailList" :key="index">
+                <van-row  v-if="tag == 'credit' || tag == 'leave' || tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'actualDorm' || tag == 'puYes' || tag == 'puNo' || tag == 'doorIn' || tag == 'doorOut' || tag == 'actual' || tag == 'late' || tag == 'unsign' || tag == 'early'" v-for="(item, index) in detailList" :key="index">
                   <van-col span="8" class="text-center">
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, $moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss'))" v-if="tag == 'credit' || tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{$moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
-                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.busiTime)" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.busiTime}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.busiTime)" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'actualDorm' || tag == 'late' || tag == 'unsign' || tag == 'early' || tag == 'actual'">{{item.busiTime}}</span>
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.add_time)" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
@@ -443,10 +460,10 @@
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.double1+'分')" v-if="tag == 'credit'">{{item.double1}}{{$t("分")}}</span>
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.double1+'天')" v-if="tag == 'leave'">{{item.double1}}{{$t("天")}}</span>
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.str2)" v-if="tag == 'puYes' || tag == 'puNo'">{{item.str2}}</span>
-                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.signLength/60+'小时')" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm'">{{item.signLength/60}}{{$t("小时")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.signLength/60+'小时')" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'actualDorm'">{{item.signLength/60}}{{$t("小时")}}</span>
                     <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorIn'">{{$t("进入")}}</span>
                     <span class="content-td-maxwidth-inlineblock" v-if="tag == 'doorOut'">{{$t("外出")}}</span>
-                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.section}}{{$t("节")}}</span>
+                    <span class="content-td-maxwidth-inlineblock" v-if="tag == 'actual' || tag == 'late' || tag == 'unsign' || tag == 'early'">{{item.section}}{{$t("节")}}</span>
                   </van-col>
                 </van-row>
               </van-list>
@@ -525,6 +542,7 @@ export default {
       leaveSum: 0,
       leaveCount: 0,
       leaveRate: 0,
+      rollCallBedActualNum: 0,
       rollCallBedUnSignNum: 0,
       rollCallBedLateNum: 0,
       rollCallBedLateLongNum: 0,
@@ -651,6 +669,9 @@ export default {
         this.type = this.$t("素质学分");
         this.selTotalSum = this.scoreSum;
         this.detailUrl = '/course/quantization/user-score-page';
+      }else if (type == "actual"){
+        this.type = this.$t("课堂考勤");
+        this.detailUrl = '/course/quantization/user-roll-call-page';
       }else if (type == "late"){
         this.type = this.$t("课堂考勤");
         this.detailUrl = '/course/quantization/user-roll-call-page';
@@ -664,6 +685,9 @@ export default {
         this.type = this.$t("日常请假");
         this.selTotalSum = this.leaveSum;
         this.detailUrl = '/course/quantization/user-leave-page';
+      }else if (type == "actualDorm"){
+        this.type = this.$t("归寝签到");
+        this.detailUrl = '/course/quantization/user-roll-call-bed-page';
       }else if (type == "lateDorm"){
         this.type = this.$t("归寝签到");
         this.detailUrl = '/course/quantization/user-roll-call-bed-page';
@@ -803,6 +827,8 @@ export default {
       };
       if (this.tag == "credit"){
         data['str1'] = this.selType;
+      }else if (this.tag == "actual"){
+        data['signStatus'] = this.selType;
       }else if (this.tag == "late"){
         data['signStatus'] = this.selType;
       }else if (this.tag == "unsign"){
@@ -811,6 +837,8 @@ export default {
         data['signStatus'] = this.selType;
       }else if (this.tag == "leave"){
 
+      }else if (this.tag == "actualDorm"){
+        data['signStatus'] = this.selType;
       }else if (this.tag == "lateDorm"){
         data['signStatus'] = this.selType;
       }else if (this.tag == "unsignDorm"){
