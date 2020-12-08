@@ -434,7 +434,7 @@
 
                 <van-row v-if="tag == 'quYes' || tag == 'quNo'" v-for="(item, index) in detailList" :key="index">
                   <van-col span="12" class="text-center">
-                    <span>{{item.busiTime}}</span>
+                    <span>{{$moment(item.lastTime).format("YYYY-MM-DD")}}</span>
                   </van-col>
                   <van-col span="12" class="text-center">
                     <van-tag plain type="primary" v-for="(itemChild, index) in item.checkItemMap" :key="index">{{itemChild.checkItem}}</van-tag>

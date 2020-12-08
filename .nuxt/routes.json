@@ -3,42 +3,49 @@
     "name": "indexBak",
     "path": "/indexBak",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/indexBak.vue",
-    "chunkName": "pages/indexBak"
+    "chunkName": "pages/indexBak",
+    "_name": "_941d8802"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/login.vue",
-    "chunkName": "pages/login"
+    "chunkName": "pages/login",
+    "_name": "_0147b7d8"
   },
   {
     "name": "noticeDetailList",
     "path": "/noticeDetailList",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/noticeDetailList.vue",
-    "chunkName": "pages/noticeDetailList"
+    "chunkName": "pages/noticeDetailList",
+    "_name": "_11463fa8"
   },
   {
     "name": "noticeList",
     "path": "/noticeList",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/noticeList.vue",
-    "chunkName": "pages/noticeList"
+    "chunkName": "pages/noticeList",
+    "_name": "_32ad670a"
   },
   {
     "name": "userDetail",
     "path": "/userDetail",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/userDetail.vue",
-    "chunkName": "pages/userDetail"
+    "chunkName": "pages/userDetail",
+    "_name": "_f802743e"
   },
   {
     "name": "userList",
     "path": "/userList",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/userList.vue",
-    "chunkName": "pages/userList"
+    "chunkName": "pages/userList",
+    "_name": "_6bd624a4"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Volumes/Macintosh HD - 数据/object/vuejs/campusPersonInfo/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_35b480fd"
   }
 ]
