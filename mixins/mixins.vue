@@ -54,6 +54,10 @@ export default {
         domain: this.campusUrl,
         uri: '/course/rollcall/campus/setting/now'
       };
+
+      if (this.$route.query.cookie != ''){
+        params['cookie'] = this.$route.query.cookie;
+      }
       this.loginStatus = false;
       if (process.browser) {
         this.campusUrl = localStorage.getItem("url");

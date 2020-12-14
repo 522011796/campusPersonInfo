@@ -52,7 +52,7 @@ export default {
   proxy: [
     ['/proxy', {
       //target: 'http://campus.9451.com',  //api请求路径
-      target: 'http://192.168.15.50:8890',
+      target: 'http://campus.9451.com:8890/',
       pathRewrite: { '^/proxy' : '/' }  //重定向请求路径，防止路由、api路径的冲突
     }]
   ],

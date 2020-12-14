@@ -564,7 +564,8 @@ export default {
       detailUrl : '',
       detailList: [],
       page: 0,
-      totalPage: 0
+      totalPage: 0,
+      cookie: ''
     }
   },
   created() {
@@ -580,6 +581,7 @@ export default {
     },
     init(){
       this.userId = this.$route.query.userId;
+      this.cookie = this.$route.query.cookie;
     },
     async initConfig() {
       await this.initCampusConfig();
@@ -597,6 +599,9 @@ export default {
           termId: this.campusTermId
         })
       };
+      if (this.cookie != ''){
+        data['cookie'] = this.cookie;
+      }
       //console.log(data);
       this.showLoading = true;
       this.$axios.get("/proxy/", {params: data}).then(res =>{
@@ -648,6 +653,9 @@ export default {
         domain: this.campusUrl,
         uri: '/course/quantization//query-term-list'
       };
+      if (this.cookie != ''){
+        data['cookie'] = this.cookie;
+      }
       this.$axios.get("/proxy/", {params: data}).then(res =>{
         this.yearList = res.data.data;
         if (res.data.data){

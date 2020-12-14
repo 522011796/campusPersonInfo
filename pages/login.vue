@@ -225,15 +225,8 @@ export default {
                 campusName: this.campusName
               }
             });
-          }else if (res.data.userType == 5){
-            //console.log(res.data.data);
-            /*this.$router.push({
-              path: '/userDetail',
-              query: {
-                userId: item.userId,
-                campusName: this.campusName
-              }
-            });*/
+          }else {
+            Notify({ type: 'warning', message: '该用户暂时不能登录' });
           }
         }else {
           Notify({ type: 'warning', message: res.data.desc });
