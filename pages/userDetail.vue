@@ -833,9 +833,6 @@ export default {
         domain: this.campusUrl,
         uri: this.detailUrl
       };
-      if (this.cookie != ''){
-        data['cookie'] = this.cookie;
-      }
       if (this.tag == "credit"){
         data['str1'] = this.selType;
       }else if (this.tag == "actual"){
