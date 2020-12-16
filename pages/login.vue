@@ -72,7 +72,7 @@ export default {
       list: [],
       listLike: [],
       showPop: false,
-      timeDown: 6 * 1000,
+      timeDown: 30 * 1000,
       timeDownStatus: false
     }
   },
@@ -190,7 +190,7 @@ export default {
     },
     finish(){
       this.timeDownStatus = false;
-      this.timeDown = 6 * 1000;
+      this.timeDown = 30 * 1000;
     },
     login(values) {
       if (!this.campusUrl || this.campusUrl == ""){
