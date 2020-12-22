@@ -29,8 +29,8 @@
             <van-col span="12">
               <div>
                 <van-button type="primary" size="small" color="#6bd575" @click="showYearList()">
-                  {{yearStr}}
-                  <i class="fa fa-caret-down"></i>
+                  <span class="span-tag-title">{{yearStr}}</span>
+                  <i class="fa fa-caret-down" style="position: relative; top: -2px;"></i>
                 </van-button>
               </div>
             </van-col>
@@ -51,13 +51,13 @@
             </van-col>
             <van-col span="9" class="padding-left-10">
               <div class="margin-top-5">
-                <span>{{userInfo.real_name}}</span>
+                <span class="span-tag-title">{{userInfo.real_name}}</span>
               </div>
               <div class="margin-top-5">
-                <span>{{userInfo.class_name}}</span>
+                <span class="span-tag-title">{{userInfo.class_name}}</span>
               </div>
               <div class="margin-top-5">
-                <span>{{userInfo.college_name}}</span>
+                <span class="span-tag-title">{{userInfo.college_name}}</span>
               </div>
             </van-col>
             <van-col span="1">
@@ -445,7 +445,7 @@
                   <van-col span="8" class="text-center">
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, $moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss'))" v-if="tag == 'credit' || tag == 'leave' || tag == 'puYes' || tag == 'puNo'">{{$moment(item.apply_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.busiTime)" v-if="tag == 'lateDorm' || tag == 'unsignDorm' || tag == 'longDorm' || tag == 'actualDorm' || tag == 'late' || tag == 'unsign' || tag == 'early' || tag == 'actual'">{{item.busiTime}}</span>
-                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.add_time)" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                    <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, $moment(item.add_time).format('YYYY-MM-DD HH:mm:ss'))" v-if="tag == 'doorIn' || tag == 'doorOut'">{{$moment(item.add_time).format('YYYY-MM-DD HH:mm:ss')}}</span>
                   </van-col>
                   <van-col span="8" class="text-center">
                     <span class="content-td-maxwidth-inlineblock" @click="detailPop($event, item.str2+'('+item.str3+')')" v-if="tag == 'credit'">{{item.str2}}({{item.str3}})</span>
@@ -866,6 +866,10 @@ export default {
       }else if (this.tag == "doorOut"){
         data['deviceSceneSubType'] = 2;
       }
+
+      if (this.cookie != ''){
+        data['cookie'] = this.cookie;
+      }
       params['data'] = JSON.stringify(data);
       this.$axios.get("/proxy/", {params: params}).then(res => {
         this.refreshing = false;
@@ -951,5 +955,14 @@ export default {
   }
   .detail-opo-year-active{
     color: #6bd575;
+  }
+  .span-tag-title{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    display: inline-block;
+    max-width: 100px;
+    line-height: 18px;
   }
 </style>
