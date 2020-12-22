@@ -65,16 +65,22 @@
             </van-col>
             <van-col span="9">
               <div class="margin-top-5">
+                <span>{{$t("状态")}}: </span>
+                <span>
+                  <label>
+                    <van-button plain size="mini" type="warning">
+                    {{$utils.studentTeachStatus('set', userInfo.status)}}
+                    </van-button>
+                  </label>
+                </span>
+              </div>
+              <div class="margin-top-5">
                 <span>{{$t("学号")}}: </span>
                 <span>{{userInfo.student_id}}</span>
               </div>
               <div class="margin-top-5">
                 <span>{{$t("宿舍")}}: </span>
                 <span>{{userInfo.dormitory_no}}</span>
-              </div>
-              <div class="margin-top-5">
-                <span>{{$t("手机")}}: </span>
-                <span>{{userInfo.phone}}</span>
               </div>
             </van-col>
           </van-row>
@@ -96,15 +102,17 @@
             </div>
             <div class="margin-top-5">
               <span>
-                <label>{{$t("加分")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'credit', '加分', '加分', scoreAddCount)">{{scoreAddCount}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'credit', '加分', '加分', scoreAddCount)">
+                    <label>{{$t("加分")}}</label>{{scoreAddCount}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("减分")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'credit', '减分', '减分', scoreMinusCount)">{{scoreMinusCount}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'credit', '减分', '减分', scoreMinusCount)">
+                    <label>{{$t("减分")}}</label>{{scoreMinusCount}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总分数")}}</span>
@@ -123,31 +131,32 @@
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
-              <div style="margin-bottom: 10px">
-                <span>
-                  <label>{{$t("出勤")}}</label>
-                  <label>
-                    <van-button plain size="mini" type="primary" @click="showDetail($event, 'actual', '出勤', '1', rollCallActualNum)">{{rollCallActualNum}}{{$t("节")}}</van-button>
-                  </label>
-                </span>
-              </div>
-
               <span>
-                <label>{{$t("迟到")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到', '3', rollCallLateNum)">{{rollCallLateNum}}{{$t("节")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'actual', '出勤', '1', rollCallActualNum)">
+                    <label>{{$t("出勤")}}</label>{{rollCallActualNum}}{{$t("节")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("旷课")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课', '0', rollCallUnSignNum)">{{rollCallUnSignNum}}{{$t("节")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'late', '迟到', '3', rollCallLateNum)">
+                    <label>{{$t("迟到")}}</label>{{rollCallLateNum}}{{$t("节")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("早退")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退', '4', rollCallLeaveEarlyNum)">{{rollCallLeaveEarlyNum}}{{$t("节")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsign', '旷课', '0', rollCallUnSignNum)">
+                    <label>{{$t("旷课")}}</label>{{rollCallUnSignNum}}{{$t("节")}}
+                  </van-button>
+                </label>
+              </span>
+              <span class="margin-left-5">
+                <label>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'early', '早退', '4', rollCallLeaveEarlyNum)">
+                    <label>{{$t("早退")}}</label>{{rollCallLeaveEarlyNum}}{{$t("节")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总出勤")}}</span>
@@ -167,9 +176,10 @@
             </div>
             <div class="margin-top-5">
               <span>
-                <label>{{$t("请假")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'leave', '请假', '2', leaveCount)">{{leaveCount}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'leave', '请假', '2', leaveCount)">
+                    <label>{{$t("请假")}}</label>{{leaveCount}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总请假")}}</span>
@@ -188,30 +198,32 @@
               <span class="clearfix"></span>
             </div>
             <div class="margin-top-5">
-              <div style="margin-bottom: 10px">
-                <span>
-                  <label>{{$t("归寝")}}</label>
-                  <label>
-                    <van-button plain size="mini" type="primary" @click="showDetail($event, 'actualDorm', '归寝', '1', rollCallBedActualNum)">{{rollCallLateNum}}{{$t("次")}}</van-button>
-                  </label>
-                </span>
-              </div>
               <span>
-                <label>{{$t("晚归")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'lateDorm', '晚归', '3', rollCallBedLateNum)">{{rollCallBedLateNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'actualDorm', '归寝', '1', rollCallBedActualNum)">
+                    <label>{{$t("归寝")}}</label>{{rollCallLateNum}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("旷寝")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsignDorm', '旷寝', '0', rollCallBedUnSignNum)">{{rollCallBedUnSignNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'lateDorm', '晚归', '3', rollCallBedLateNum)">
+                    <label>{{$t("晚归")}}</label>{{rollCallBedLateNum}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("超长")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'longDorm', '超长', '4', rollCallBedLateLongNum)">{{rollCallBedLateLongNum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'unsignDorm', '旷寝', '0', rollCallBedUnSignNum)">
+                    <label>{{$t("旷寝")}}</label>{{rollCallBedUnSignNum}}{{$t("次")}}
+                  </van-button>
+                </label>
+              </span>
+              <span class="margin-left-5">
+                <label>
+                  <van-button plain size="mini" type="danger" @click="showDetail($event, 'longDorm', '超长', '4', rollCallBedLateLongNum)">
+                    <label>{{$t("超长")}}</label>{{rollCallBedLateLongNum}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总旷寝")}}</span>
@@ -231,15 +243,17 @@
             </div>
             <div class="margin-top-5">
               <span>
-                <label>{{$t("奖励")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'puYes', '奖励', '奖励', punishRewardCount)">{{punishRewardCount}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'puYes', '奖励', '奖励', punishRewardCount)">
+                    <label>{{$t("奖励")}}</label>{{punishRewardCount}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("处分")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'puNo', '处分', '处分', punishSanctionCount)">{{punishSanctionCount}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'puNo', '处分', '处分', punishSanctionCount)">
+                    <label>{{$t("处分")}}</label>{{punishSanctionCount}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总处分")}}</span>
@@ -259,15 +273,17 @@
             </div>
             <div class="margin-top-5">
               <span>
-                <label>{{$t("合格")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'quYes', '合格', 'true', dormPassCountTotal)">{{dormPassCountTotal}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'quYes', '合格', 'true', dormPassCountTotal)">
+                    <label>{{$t("合格")}}</label>{{dormPassCountTotal}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="margin-left-10">
-                <label>{{$t("不合格")}}</label>
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'quNo', '不合格', 'false', dormLowCountTotal)">{{dormLowCountTotal}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'quNo', '不合格', 'false', dormLowCountTotal)">
+                    <label>{{$t("不合格")}}</label>{{dormLowCountTotal}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("不合格")}}</span>
@@ -286,15 +302,17 @@
             </div>
             <div class="margin-top-5">
               <span>
-                <label>{{$t("进入")}}</label>
                 <label>
-                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'doorIn', '进入', '1', inDoorSum)">{{inDoorSum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="primary" @click="showDetail($event, 'doorIn', '进入', '1', inDoorSum)">
+                    <label>{{$t("进入")}}</label>{{inDoorSum}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
-              <span class="margin-left-10">
-                <label>{{$t("外出")}}</label>
+              <span class="margin-left-5">
                 <label>
-                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'doorOut', '外出', '2', outDoorSum)">{{outDoorSum}}{{$t("次")}}</van-button>
+                  <van-button plain size="mini" type="warning" @click="showDetail($event, 'doorOut', '外出', '2', outDoorSum)">
+                    <label>{{$t("外出")}}</label>{{outDoorSum}}{{$t("次")}}
+                  </van-button>
                 </label>
               </span>
               <span class="pull-right font-bold">{{$t("总通行")}}</span>
@@ -868,14 +886,13 @@ export default {
       }
 
       if (this.cookie != ''){
-        data['cookie'] = this.cookie;
+        params['cookie'] = this.cookie;
       }
       params['data'] = JSON.stringify(data);
       this.$axios.get("/proxy/", {params: params}).then(res => {
         this.refreshing = false;
         this.loading = false;
         _self.detailList = _self.detailList.concat(res.data.data.list);
-        console.log(_self.detailList);
         _self.totalPage = res.data.data.pageNum;
         _self.page = res.data.data.currentPage;
 

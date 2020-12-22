@@ -126,5 +126,31 @@ export default {
     }else{
       return '--';
     }
+  },
+  studentTeachStatus(type, str) {
+    let studentTeachStatus = {
+      "11":"死亡",
+      "99":"其他",
+      "01":"在读",
+      "12":"保留入学资格",
+      "02":"休学",
+      "13":"公派出国",
+      "03":"退学",
+      "14":"开除",
+      "04":"停学",
+      "15":"下落不明",
+      "05":"复学",
+      "06":"流失",
+      "07":"毕业",
+      "08":"结业",
+      "09":"肆业",
+      "10":"转学"
+    };
+    if (str && type == 'set') {
+      return studentTeachStatus[str];
+    }
+    if (!str && type == 'get'){
+      return studentTeachStatus;
+    }
   }
 }
