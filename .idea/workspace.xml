@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/components/nuxt-build-indicator.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/components/nuxt-error.vue" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/components/nuxt-error.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/loading.html" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/loading.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/server.js" afterDir="false" />
@@ -13,7 +12,6 @@
       <change beforePath="$PROJECT_DIR$/.nuxt/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/utils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.nuxt/views/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/views/error.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/userDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userDetail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1608543214149" duration="598000" />
       <workItem from="1608554219162" duration="367000" />
       <workItem from="1608603175016" duration="2132000" />
-      <workItem from="1608625084719" duration="2029000" />
+      <workItem from="1608625084719" duration="5277000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604054123842</created>
@@ -265,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608619958629</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="init">
+      <created>1608636270295</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1608636270295</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,11 +285,11 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1604297857738" />
-    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2" timestamp="1608619956566">
+    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2" timestamp="1608636268263">
       <screen x="0" y="25" width="1440" height="798" />
     </state>
     <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1605089391363" />
-    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2/0.25.1440.798@0.25.1440.798" timestamp="1608619956566" />
+    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2/0.25.1440.798@0.25.1440.798" timestamp="1608636268263" />
     <state x="560" y="326" key="Github.ShareDialog" timestamp="1604053366164">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
@@ -293,11 +298,11 @@
       <screen x="0" y="23" width="1440" height="805" />
     </state>
     <state x="378" y="139" key="Github.UntrackedFilesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053371884" />
-    <state x="320" y="166" key="Vcs.Push.Dialog.v2" timestamp="1608619966669">
+    <state x="320" y="166" key="Vcs.Push.Dialog.v2" timestamp="1608636272493">
       <screen x="0" y="25" width="1440" height="798" />
     </state>
     <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1605089395091" />
-    <state x="320" y="166" key="Vcs.Push.Dialog.v2/0.25.1440.798@0.25.1440.798" timestamp="1608619966669" />
+    <state x="320" y="166" key="Vcs.Push.Dialog.v2/0.25.1440.798@0.25.1440.798" timestamp="1608636272493" />
     <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604108909274">
       <screen x="0" y="23" width="1440" height="805" />
     </state>
