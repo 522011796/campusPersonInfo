@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="485b0077-8e07-4869-bc53-2544d0a2b9aa" name="Default Changelist" comment="">
+    <list default="true" id="485b0077-8e07-4869-bc53-2544d0a2b9aa" name="Default Changelist" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/components/nuxt-error.vue" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/components/nuxt-error.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/loading.html" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/loading.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.nuxt/views/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/.nuxt/views/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/userDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/userDetail.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +16,10 @@
   <component name="ProjectId" id="1jZu5RPO6OYo0n6xG665PLOfkAV" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -38,6 +30,8 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+    <property name="vuejs.nuxt.types-notification-shown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -60,6 +54,7 @@
       </list>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -87,6 +82,8 @@
       <workItem from="1608554219162" duration="367000" />
       <workItem from="1608603175016" duration="2132000" />
       <workItem from="1608625084719" duration="5277000" />
+      <workItem from="1679991916425" duration="886000" />
+      <workItem from="1683788887617" duration="21000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1604054123842</created>
@@ -274,43 +271,10 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
     <option name="LAST_COMMIT_MESSAGE" value="init" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604297857738">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="424" y="235" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.805@0.23.1440.805" timestamp="1604297857738" />
-    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2" timestamp="1608636268263">
-      <screen x="0" y="25" width="1440" height="798" />
-    </state>
-    <state x="193" y="28" key="CommitChangelistDialog2/0.23.1440.805@0.23.1440.805" timestamp="1605089391363" />
-    <state x="193" y="25" width="995" height="798" key="CommitChangelistDialog2/0.25.1440.798@0.25.1440.798" timestamp="1608636268263" />
-    <state x="560" y="326" key="Github.ShareDialog" timestamp="1604053366164">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="560" y="326" key="Github.ShareDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053366164" />
-    <state x="378" y="139" key="Github.UntrackedFilesDialog" timestamp="1604053371884">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="378" y="139" key="Github.UntrackedFilesDialog/0.23.1440.805@0.23.1440.805" timestamp="1604053371884" />
-    <state x="320" y="166" key="Vcs.Push.Dialog.v2" timestamp="1608636272493">
-      <screen x="0" y="25" width="1440" height="798" />
-    </state>
-    <state x="320" y="165" key="Vcs.Push.Dialog.v2/0.23.1440.805@0.23.1440.805" timestamp="1605089395091" />
-    <state x="320" y="166" key="Vcs.Push.Dialog.v2/0.25.1440.798@0.25.1440.798" timestamp="1608636272493" />
-    <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1604108909274">
-      <screen x="0" y="23" width="1440" height="805" />
-    </state>
-    <state x="357" y="47" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.805@0.23.1440.805" timestamp="1604108909274" />
-    <state x="378" y="183" width="683" height="486" key="find.popup" timestamp="1607680469910">
-      <screen x="0" y="25" width="1440" height="798" />
-    </state>
-    <state x="378" y="182" width="683" height="486" key="find.popup/0.23.1440.805@0.23.1440.805" timestamp="1605145982652" />
-    <state x="378" y="183" width="683" height="486" key="find.popup/0.25.1440.798@0.25.1440.798" timestamp="1607680469910" />
   </component>
 </project>
