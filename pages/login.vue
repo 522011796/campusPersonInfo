@@ -205,7 +205,7 @@ export default {
         domain: this.campusUrl,
         uri: '/user/login',
         data: JSON.stringify({
-          accountType: 4,
+          accountType: 3,
           account: this.phone,
           password: this.code
         })

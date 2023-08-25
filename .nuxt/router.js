@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _941d8802 = () => interopDefault(import('../pages/indexBak.vue' /* webpackChunkName: "pages/indexBak" */))
-const _0147b7d8 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
-const _11463fa8 = () => interopDefault(import('../pages/noticeDetailList.vue' /* webpackChunkName: "pages/noticeDetailList" */))
-const _32ad670a = () => interopDefault(import('../pages/noticeList.vue' /* webpackChunkName: "pages/noticeList" */))
-const _f802743e = () => interopDefault(import('../pages/userDetail.vue' /* webpackChunkName: "pages/userDetail" */))
-const _6bd624a4 = () => interopDefault(import('../pages/userList.vue' /* webpackChunkName: "pages/userList" */))
-const _35b480fd = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _557784aa = () => interopDefault(import('../pages/indexBak.vue' /* webpackChunkName: "pages/indexBak" */))
+const _5d039349 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _0c5d6452 = () => interopDefault(import('../pages/noticeDetailList.vue' /* webpackChunkName: "pages/noticeDetailList" */))
+const _847fd334 = () => interopDefault(import('../pages/noticeList.vue' /* webpackChunkName: "pages/noticeList" */))
+const _5b158fcc = () => interopDefault(import('../pages/userDetail.vue' /* webpackChunkName: "pages/userDetail" */))
+const _699b3659 = () => interopDefault(import('../pages/userList.vue' /* webpackChunkName: "pages/userList" */))
+const _d9481f9c = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -29,31 +29,31 @@ export const routerOptions = {
 
   routes: [{
     path: "/indexBak",
-    component: _941d8802,
+    component: _557784aa,
     name: "indexBak"
   }, {
     path: "/login",
-    component: _0147b7d8,
+    component: _5d039349,
     name: "login"
   }, {
     path: "/noticeDetailList",
-    component: _11463fa8,
+    component: _0c5d6452,
     name: "noticeDetailList"
   }, {
     path: "/noticeList",
-    component: _32ad670a,
+    component: _847fd334,
     name: "noticeList"
   }, {
     path: "/userDetail",
-    component: _f802743e,
+    component: _5b158fcc,
     name: "userDetail"
   }, {
     path: "/userList",
-    component: _6bd624a4,
+    component: _699b3659,
     name: "userList"
   }, {
     path: "/",
-    component: _35b480fd,
+    component: _d9481f9c,
     name: "index"
   }],
 
